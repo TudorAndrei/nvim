@@ -11,7 +11,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Notes
     Plug 'renerocksai/telekasten.nvim'
     Plug 'renerocksai/calendar-vim'
-    " Startup time infor
+
+    " GitSigns
+    Plug 'lewis6991/gitsigns.nvim'
+    "Startup time info
     Plug 'dstein64/vim-startuptime'
 
     " Fast startup
@@ -90,7 +93,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vim-pandoc/vim-pandoc', {'for': ['markdown', 'rmd']}
     Plug 'vim-pandoc/vim-pandoc-syntax', {'for': ['markdown', 'rmd']}
     Plug 'vim-pandoc/vim-rmarkdown', {'for': ['markdown', 'rmd']}
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
     Plug 'ferrine/md-img-paste.vim', {'for': ['markdown', 'rmd']}
 
     " Latex
@@ -133,7 +136,7 @@ endif
 
 let g:tpipeline_cursormoved = 1
 
-:lua require('impatient')
+:lua require('patient')
 :lua require("lsp")
 :lua require("tele")
 :lua require("nvimtree")
@@ -145,3 +148,5 @@ let g:tpipeline_cursormoved = 1
 :lua require("csscolors")
 :lua require("todo")
 :lua require("zet")
+:lua require("git_signs")
+
