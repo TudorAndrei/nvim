@@ -8,12 +8,17 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+
+    Plug 'preservim/vim-wordy'
+    Plug 'jamestomasino/vim-writingsyntax'
+
     " Notes
     Plug 'renerocksai/telekasten.nvim'
     Plug 'renerocksai/calendar-vim'
 
     " GitSigns
     Plug 'lewis6991/gitsigns.nvim'
+
     "Startup time info
     Plug 'dstein64/vim-startuptime'
 
@@ -27,7 +32,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-obsession'
 
     " Merge tmux statusline and nvim statusline
-    Plug 'vimpostor/vim-tpipeline'
+    " Plug 'vimpostor/vim-tpipeline'
 
     " Indent markers
     Plug 'lukas-reineke/indent-blankline.nvim'
@@ -67,6 +72,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-emoji'
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-nvim-lua'
+    Plug 'hrsh7th/cmp-omni'
     Plug 'kdheepak/cmp-latex-symbols'
     " Plug 'tudorandrei/cmp-pandoc-references'
     " Not working
@@ -77,6 +83,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Snipets - use utilsnips and luasnip
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'L3MON4D3/LuaSnip'
+    Plug 'rafamadriz/friendly-snippets'
 
     " File icons
     Plug 'kyazdani42/nvim-web-devicons'
@@ -105,8 +112,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'norcalli/nvim-colorizer.lua'
 
     " Autoclose tags and ({[]})
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'alvan/vim-closetag'
+    Plug 'windwp/nvim-autopairs'
+    Plug 'windwp/nvim-ts-autotag'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
 
@@ -119,6 +126,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Tmux pane switching
     Plug 'christoomey/vim-tmux-navigator'
 
+    Plug 'wlangstroth/vim-racket'
 
     " Todo
     Plug 'folke/todo-comments.nvim'
@@ -149,4 +157,4 @@ let g:tpipeline_cursormoved = 1
 :lua require("todo")
 :lua require("zet")
 :lua require("git_signs")
-
+:lua require("pairs")

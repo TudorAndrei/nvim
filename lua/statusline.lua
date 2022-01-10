@@ -14,6 +14,20 @@ local diagnostics = {
 	always_visible = true,
 }
 
+local function getWords()
+  if vim.bo.filetype == "md" or vim.bo.filetype == "txt" or vim.bo.filetype == "rmd" then
+    if vim.fn.wordcount().visual_words == 1 then
+      return tostring(vim.fn.wordcount().visual_words) .. " word"
+    elseif not (vim.fn.wordcount().visual_words == nil) then
+      return tostring(vim.fn.wordcount().visual_words) .. " words"
+    else
+      return tostring(vim.fn.wordcount().words) .. " words"
+    end
+  else
+    return ""
+  end
+end
+
 local diff = {
 	"diff",
 	colored = false,
@@ -51,7 +65,7 @@ local config = {
         lualine_a = {'mode'},
         lualine_b = {branch},
         lualine_c = {'filename', diagnostics, lsp_progress},
-        lualine_x = {diff, 'encoding'},
+        lualine_x = {diff, 'encoding', {getWords}},
         lualine_y = {filetype},
         lualine_z = {location}
     },
