@@ -7,12 +7,11 @@ local nvim_lsp = require("lspconfig")
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
-  return
+	return
 end
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
-require("lspconfig").vimls.setup({})
 require("cmp_pandoc").setup()
 
 local on_attach = function(client, bufnr)
@@ -37,9 +36,10 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	buf_set_keymap("n", "<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
-	-- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-	-- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+	buf_set_keymap("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+	buf_set_keymap("n", "<Leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 	buf_set_keymap("n", "<Leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+
 	buf_set_keymap("n", "<Leader>gf", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
@@ -73,7 +73,9 @@ nvim_lsp.pyright.setup({
 	},
 })
 
--- require'lspconfig'.r_language_server.setup{}
+require("lspconfig").r_language_server.setup({
+	on_attach = on_attach,
+})
 
 cmp.setup({
 	snippet = {
@@ -92,8 +94,6 @@ cmp.setup({
 				cmp.select_next_item()
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
 			else
 				fallback()
 			end
@@ -143,38 +143,46 @@ cmp.setup({
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 
-require("lspconfig").racket_langserver.setup({})
+-- Racket
+require("lspconfig").racket_langserver.setup({
+	on_attach = on_attach,
+})
 
--- USER = vim.fn.expand('$USER')
+-- Lua
+USER = vim.fn.expand("$USER")
 
--- local sumneko_root_path = ""
--- local sumneko_binary = ""
+local sumneko_root_path = ""
+local sumneko_binary = ""
 
--- if vim.fn.has("unix") == 1 then
---     sumneko_root_path = "/home/" .. USER .. "/projects/lua-language-server"
---     sumneko_binary = "/home/" .. USER .. "/projects/lua-language-server/bin/lua-language-server"
--- else
---     print("Unsupported system for sumneko")
--- end
+if vim.fn.has("unix") == 1 then
+	sumneko_root_path = "/home/" .. USER .. "/projects/lua-language-server"
+	sumneko_binary = "/home/" .. USER .. "/projects/lua-language-server/bin/lua-language-server"
+else
+	print("Unsupported system for sumneko")
+end
 
--- require'lspconfig'.sumneko_lua.setup {
---     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
---     settings = {
---         Lua = {
---             runtime = {
---                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---                 version = 'LuaJIT',
---                 -- Setup your lua path
---                 path = vim.split(package.path, ';')
---             },
---             diagnostics = {
---                 -- Get the language server to recognize the `vim` global
---                 globals = {'vim'}
---             },
---             workspace = {
---                 -- Make the server aware of Neovim runtime files
---                 library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
---             }
---         }
---     }
--- }
+require("lspconfig").sumneko_lua.setup({
+	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT",
+				path = vim.split(package.path, ";"),
+			},
+			diagnostics = {
+				globals = { "vim" },
+			},
+			workspace = {
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+				},
+			},
+		},
+	},
+})
+-- Vim ls
+require("lspconfig").vimls.setup({
+	on_attach = on_attach,
+})
