@@ -165,3 +165,15 @@ OpenWhisk
 js
 Virtual
 SaaS
+NoSQL
+OpenSearch
+DynamoDB
+MongoDB
+FaunaDB
+CosmosDB
+YugaByteDB
+FoundationDB
+S3
+PostgreSQL
+IoT
+leaderboards

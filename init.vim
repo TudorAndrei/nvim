@@ -9,7 +9,7 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 
-    Plug 'preservim/vim-wordy'
+    " Plug 'preservim/vim-wordy'
     Plug 'jamestomasino/vim-writingsyntax'
 
     " Notes
@@ -74,6 +74,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'hrsh7th/cmp-omni'
     Plug 'kdheepak/cmp-latex-symbols'
+    Plug 'PaterJason/cmp-conjure'
     " Plug 'tudorandrei/cmp-pandoc-references'
     " Not working
     Plug 'aspeddro/cmp-pandoc.nvim'
@@ -127,6 +128,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'christoomey/vim-tmux-navigator'
 
     Plug 'wlangstroth/vim-racket'
+    Plug 'Olical/conjure',{ 'branch': 'develop' }
 
     " Todo
     Plug 'folke/todo-comments.nvim'
@@ -145,6 +147,7 @@ endif
 let g:tpipeline_cursormoved = 1
 
 :lua require('patient')
+:lua require('racket-sitter')
 :lua require("lsp")
 :lua require("tele")
 :lua require("nvimtree")

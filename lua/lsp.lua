@@ -114,6 +114,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "cmp_pandoc" },
+		{ name = "conjure" },
 		{ name = "nvim_lua" },
 		-- { name = "latex_symbols"},
 		{ name = "emoji" },
@@ -131,6 +132,8 @@ cmp.setup({
 				cmp_pandoc = "[pdc]",
 				luasnip = "[snip]",
 				gh_issues = "[issues]",
+				omni = "[omni]",
+                conjure = "[lisp]"
 			},
 		}),
 	},
