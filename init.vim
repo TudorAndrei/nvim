@@ -20,7 +20,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'lewis6991/gitsigns.nvim'
 
     "Startup time info
-    Plug 'dstein64/vim-startuptime'
+    Plug 'dstein64/vim-startuptime', {'on': 'StartupTime'}
 
     " Fast startup
     Plug 'lewis6991/impatient.nvim'
