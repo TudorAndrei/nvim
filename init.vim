@@ -75,7 +75,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-omni'
     Plug 'kdheepak/cmp-latex-symbols'
     Plug 'PaterJason/cmp-conjure'
-    " Plug 'tudorandrei/cmp-pandoc-references'
+    " Plug 'jc-doyle/cmp-pandoc-references'
     " Not working
     Plug 'aspeddro/cmp-pandoc.nvim'
     " Plug 'jbyuki/nabla.nvim'

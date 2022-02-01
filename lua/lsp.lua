@@ -1,7 +1,6 @@
 local pypath = vim.g.current_python_path
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local lspkind = require("lspkind")
-lspkind.init()
 local cmp = require("cmp")
 local nvim_lsp = require("lspconfig")
 
@@ -10,8 +9,8 @@ if not snip_status_ok then
 	return
 end
 
+lspkind.init()
 require("luasnip/loaders/from_vscode").lazy_load()
-
 require("cmp_pandoc").setup()
 
 local on_attach = function(client, bufnr)
@@ -114,6 +113,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "cmp_pandoc" },
+		-- { name = "pandoc_references" },
 		{ name = "conjure" },
 		{ name = "nvim_lua" },
 		-- { name = "latex_symbols"},
@@ -133,7 +133,7 @@ cmp.setup({
 				luasnip = "[snip]",
 				gh_issues = "[issues]",
 				omni = "[omni]",
-                conjure = "[lisp]"
+				conjure = "[lisp]",
 			},
 		}),
 	},
