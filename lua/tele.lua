@@ -1,6 +1,3 @@
- require("trouble").setup {
-
-    }
 require'telescope'.setup {
   extensions = {
     media_files = {
@@ -8,3 +5,7 @@ require'telescope'.setup {
     }
   },
 }
+
+ require("trouble").setup {
+
+    }

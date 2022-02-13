@@ -8,6 +8,13 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+    Plug 'vim-test/vim-test'
+
+    " Pretty Notifications
+    Plug 'rcarriga/nvim-notify'
+
+    " Neovim Notebooks
+    Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 
     " Plug 'preservim/vim-wordy'
     Plug 'jamestomasino/vim-writingsyntax'
@@ -48,6 +55,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Colorscheme
     Plug 'Mofiqul/dracula.nvim'
+    Plug 'folke/lsp-colors.nvim'
+
+
 
     " Autocomplete, lsp and the other shenanigans
     Plug 'neovim/nvim-lspconfig'
@@ -155,7 +165,6 @@ let g:tpipeline_cursormoved = 1
 :lua require("indent")
 :lua require("null")
 :lua require("treesitter")
-:lua require("trouble")
 :lua require("csscolors")
 :lua require("todo")
 :lua require("zet")

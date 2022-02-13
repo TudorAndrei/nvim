@@ -13,7 +13,14 @@ lspkind.init()
 require("luasnip/loaders/from_vscode").lazy_load()
 require("cmp_pandoc").setup()
 
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 local on_attach = function(client, bufnr)
+
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -189,3 +196,4 @@ require("lspconfig").sumneko_lua.setup({
 require("lspconfig").vimls.setup({
 	on_attach = on_attach,
 })
+
