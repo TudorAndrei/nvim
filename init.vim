@@ -20,7 +20,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jamestomasino/vim-writingsyntax'
 
     " Notes
-    Plug 'renerocksai/telekasten.nvim'
+    Plug 'renerocksai/telekasten.nvim', {'for': 'rmd'}
     Plug 'renerocksai/calendar-vim'
 
     " GitSigns
