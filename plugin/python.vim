@@ -1,4 +1,3 @@
-
 " Run python on the current file
 autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:!python3 "%"<CR>
 " Python indentaiotn
@@ -6,8 +5,3 @@ autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:!python3 "%"<CR>
 "     \ set expandtab       |" replace tabs with spaces
 "     \ set autoindent      |" copy indent when starting a new line
 "     \ set foldmethod=indent
-
-" Black
-" autocmd BufWritePre *.py execute ':Black'
-" autocmd BufWritePre *.py execute ':Isort'
-let g:black_linelength = 79

@@ -9,6 +9,7 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 
     Plug 'vim-test/vim-test'
+    Plug 'preservim/vimux'
 
     " Pretty Notifications
     Plug 'rcarriga/nvim-notify'
@@ -20,7 +21,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jamestomasino/vim-writingsyntax'
 
     " Notes
-    Plug 'renerocksai/telekasten.nvim', {'for': 'rmd'}
+    Plug 'renerocksai/telekasten.nvim', {'for': ['rmd', 'md', 'telekasten']}
     Plug 'renerocksai/calendar-vim'
 
     " GitSigns
@@ -155,6 +156,7 @@ else
 endif
 
 let g:tpipeline_cursormoved = 1
+let test#strategy = 'vimux'
 
 :lua require('patient')
 :lua require('racket-sitter')
