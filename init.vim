@@ -138,8 +138,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Tmux pane switching
     Plug 'christoomey/vim-tmux-navigator'
 
-    Plug 'wlangstroth/vim-racket'
-    Plug 'Olical/conjure',{ 'branch': 'develop' }
+    Plug 'wlangstroth/vim-racket', {'for': 'racket'}
+    Plug 'Olical/conjure',{ 'branch': 'develop', 'for': 'racket' }
 
     " Todo
     Plug 'folke/todo-comments.nvim'
