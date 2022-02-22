@@ -138,7 +138,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Tmux pane switching
     Plug 'christoomey/vim-tmux-navigator'
 
-    Plug 'wlangstroth/vim-racket', {'for': 'racket'}
+    Plug 'wlangstroth/vim-racket'
     Plug 'Olical/conjure',{ 'branch': 'develop', 'for': 'racket' }
 
     " Todo
@@ -156,7 +156,6 @@ else
 endif
 
 let g:tpipeline_cursormoved = 1
-let test#strategy = 'vimux'
 
 :lua require('patient')
 :lua require('racket-sitter')
