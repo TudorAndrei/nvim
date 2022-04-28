@@ -75,6 +75,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     Plug 'nvim-lua/plenary.nvim'
     Plug 'onsails/lspkind-nvim'
+    " Sticky signature
+    Plug 'ray-x/lsp_signature.nvim'
 
     " Autocomplete sources
     Plug 'hrsh7th/nvim-cmp'

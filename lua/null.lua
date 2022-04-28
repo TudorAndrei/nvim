@@ -49,12 +49,7 @@ null_ls.setup({
 			filetypes = { "markdown", "rmd", "telekasten" },
 		}),
 		formatting.stylua,
-		formatting.isort.with({
-			args = {
-				"--profile",
-				"black",
-			},
-		}),
+		formatting.isort,
 		formatting.latexindent,
 		diag.write_good,
 		formatting.black.with({

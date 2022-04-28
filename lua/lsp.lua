@@ -13,6 +13,13 @@ lspkind.init()
 require("luasnip/loaders/from_vscode").lazy_load()
 require("cmp_pandoc").setup()
 
+ require "lsp_signature".setup({
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+    handler_opts = {
+      border = "rounded"
+    }
+  })
+
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
