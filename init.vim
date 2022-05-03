@@ -21,7 +21,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jamestomasino/vim-writingsyntax'
 
     " Notes
-    Plug 'renerocksai/telekasten.nvim', {'for': ['rmd', 'md', 'telekasten']}
+    Plug 'renerocksai/telekasten.nvim' , {'for': ['rmd', 'md', 'telekasten']}
     Plug 'renerocksai/calendar-vim'
 
     " GitSigns
@@ -87,7 +87,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'hrsh7th/cmp-omni'
     Plug 'kdheepak/cmp-latex-symbols'
-    Plug 'PaterJason/cmp-conjure'
+    " Plug 'PaterJason/cmp-conjure'
     " Plug 'jc-doyle/cmp-pandoc-references'
     " Not working
     Plug 'aspeddro/cmp-pandoc.nvim'
