@@ -15,13 +15,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'rcarriga/nvim-notify'
 
     " Neovim Notebooks
-    Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+    " Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 
     " Plug 'preservim/vim-wordy'
     Plug 'jamestomasino/vim-writingsyntax'
 
     " Notes
-    Plug 'renerocksai/telekasten.nvim' , {'for': ['rmd', 'md', 'telekasten']}
+    Plug 'renerocksai/telekasten.nvim'
     Plug 'renerocksai/calendar-vim'
 
     " GitSigns

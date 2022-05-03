@@ -171,8 +171,8 @@ local sumneko_root_path = ""
 local sumneko_binary = ""
 
 if vim.fn.has("unix") == 1 then
-	sumneko_root_path = "/home/" .. USER .. "/projects/lua-language-server"
-	sumneko_binary = "/home/" .. USER .. "/projects/lua-language-server/bin/lua-language-server"
+	sumneko_root_path = "/home/" .. USER .. "/cave/lua-language-server"
+	sumneko_binary = "/home/" .. USER .. "/cave/lua-language-server/bin/lua-language-server"
 else
 	print("Unsupported system for sumneko")
 end

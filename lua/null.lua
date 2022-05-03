@@ -51,7 +51,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.isort,
 		formatting.latexindent,
-		diag.write_good,
+		-- diag.write_good,
 		formatting.black.with({
 			extra_args = { "--fast" },
 		}),
