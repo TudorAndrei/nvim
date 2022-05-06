@@ -8,6 +8,15 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+
+    " TODO: Integrate nvim-dap
+    " Plug 'mfussenegger/nvim-dap'
+    " Plug 'rcarriga/nvim-dap-ui'
+    " Plug 'Pocco81/dap-buddy.nvim', {'commit': 'dfa5e810f0fa17c3fcf5c60ab066f14406be7172'}
+    " Plug 'mfussenegger/nvim-dap-python'
+    " Plug 'nvim-telescope/telescope-dap.nvim'
+
+
     Plug 'vim-test/vim-test'
     Plug 'preservim/vimux'
 

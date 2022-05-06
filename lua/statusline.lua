@@ -59,6 +59,8 @@ local config = {
 		component_separators = { "", "" },
 		section_separators = { "", "" },
 		disabled_filetypes = { "dashboard", "NvimTree", "Outline", "TelescopePrompt" },
+
+        globalstatus = true,
 	},
 	sections = {
 		lualine_a = { "mode" },
