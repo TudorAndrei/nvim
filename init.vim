@@ -15,6 +15,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'Pocco81/dap-buddy.nvim', {'commit': 'dfa5e810f0fa17c3fcf5c60ab066f14406be7172'}
     " Plug 'mfussenegger/nvim-dap-python'
     " Plug 'nvim-telescope/telescope-dap.nvim'
+    Plug 'wellle/targets.vim'
 
 
     Plug 'vim-test/vim-test'
@@ -149,7 +150,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Tmux pane switching
     Plug 'christoomey/vim-tmux-navigator'
 
-    Plug 'wlangstroth/vim-racket'
+    Plug 'benknoble/vim-racket'
     Plug 'Olical/conjure',{ 'branch': 'develop', 'for': 'racket' }
 
     " Todo
@@ -169,7 +170,7 @@ endif
 let g:tpipeline_cursormoved = 1
 
 :lua require('patient')
-:lua require('racket-sitter')
+" :lua require('racket-sitter')
 :lua require("lsp")
 :lua require("tele")
 :lua require("nvimtree")

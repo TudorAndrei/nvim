@@ -26,7 +26,7 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
