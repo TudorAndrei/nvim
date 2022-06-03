@@ -1,4 +1,3 @@
-
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " complie Rmd w/ and w/o output
 autocmd Filetype rmd noremap <F5> :w <bar> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter> :<enter>

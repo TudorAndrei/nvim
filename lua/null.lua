@@ -48,7 +48,7 @@ null_ls.setup({
 		formatting.markdownlint.with({
 			filetypes = { "markdown", "rmd", "telekasten" },
 		}),
-		formatting.stylua,
+		-- formatting.stylua,
 		formatting.isort,
 		formatting.latexindent,
 		-- diag.write_good,

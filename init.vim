@@ -8,13 +8,15 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+    " TODO: Use lsp saga
 
     " TODO: Integrate nvim-dap
-    " Plug 'mfussenegger/nvim-dap'
-    " Plug 'rcarriga/nvim-dap-ui'
+    Plug 'mfussenegger/nvim-dap'
+    Plug 'rcarriga/nvim-dap-ui'
+    Plug 'theHamsta/nvim-dap-virtual-text'
     " Plug 'Pocco81/dap-buddy.nvim', {'commit': 'dfa5e810f0fa17c3fcf5c60ab066f14406be7172'}
-    " Plug 'mfussenegger/nvim-dap-python'
-    " Plug 'nvim-telescope/telescope-dap.nvim'
+    Plug 'mfussenegger/nvim-dap-python'
+    Plug 'nvim-telescope/telescope-dap.nvim'
     Plug 'wellle/targets.vim'
 
 
@@ -86,7 +88,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'onsails/lspkind-nvim'
     " Sticky signature
-    Plug 'ray-x/lsp_signature.nvim'
+    " Plug 'ray-x/lsp_signature.nvim'
 
     " Autocomplete sources
     Plug 'hrsh7th/nvim-cmp'
@@ -96,8 +98,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'hrsh7th/cmp-omni'
+    Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
     Plug 'kdheepak/cmp-latex-symbols'
-    " Plug 'PaterJason/cmp-conjure'
+    Plug 'PaterJason/cmp-conjure'
     " Plug 'jc-doyle/cmp-pandoc-references'
     " Not working
     Plug 'aspeddro/cmp-pandoc.nvim'
@@ -151,7 +154,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'christoomey/vim-tmux-navigator'
 
     Plug 'wlangstroth/vim-racket'
-    Plug 'Olical/conjure',{ 'branch': 'develop', 'for': 'racket' }
+    Plug 'Olical/conjure',{ 'branch': 'develop', 'for': ['racket', 'sicp'] }
 
     " Todo
     Plug 'folke/todo-comments.nvim'
@@ -166,11 +169,10 @@ if $CONDA_PREFIX == ""
 else
   let g:current_python_path=$CONDA_PREFIX.'/bin/python'
 endif
-
 let g:tpipeline_cursormoved = 1
 
 :lua require('patient')
-:lua require('racket-sitter')
+" :lua require('racket-sitter')
 :lua require("lsp")
 :lua require("tele")
 :lua require("nvimtree")
@@ -183,3 +185,7 @@ let g:tpipeline_cursormoved = 1
 :lua require("zet")
 :lua require("git_signs")
 :lua require("pairs")
+:lua require("dapconfig")
+
+let g:conjure#filetypes = ["clojure", "fennel", "janet", "racket", "scheme", "sicp"]
+let g:conjure#filetype#sicp = "conjure.client.racket.stdio"
