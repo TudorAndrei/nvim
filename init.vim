@@ -8,8 +8,6 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-    " TODO: Use lsp saga
-
     " TODO: Integrate nvim-dap
     " Plug 'mfussenegger/nvim-dap'
     " Plug 'rcarriga/nvim-dap-ui'
@@ -51,8 +49,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Vin Session automanagement
     Plug 'tpope/vim-obsession'
 
-    " Merge tmux statusline and nvim statusline
-    Plug 'vimpostor/vim-tpipeline'
 
     " Indent markers
     Plug 'lukas-reineke/indent-blankline.nvim'
@@ -74,6 +70,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Autocomplete, lsp and the other shenanigans
     Plug 'neovim/nvim-lspconfig'
+    Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-refactor'
@@ -104,6 +101,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'aspeddro/cmp-pandoc.nvim'
     " Plug 'jbyuki/nabla.nvim'
 
+    Plug 'ray-x/lsp_signature.nvim'
 
     " Snipets - use utilsnips and luasnip
     Plug 'saadparwaiz1/cmp_luasnip'
@@ -177,7 +175,7 @@ let g:tpipeline_cursormoved = 1
 :lua require("nvimtree")
 :lua require("statusline")
 :lua require("indent")
-:lua require("null")
+" :lua require("null")
 :lua require("treesitter")
 :lua require("csscolors")
 :lua require("todo")
