@@ -50,6 +50,7 @@ null_ls.setup({
 		}),
 		-- formatting.stylua,
 		formatting.isort,
+        formatting.prettier,
 		formatting.latexindent,
 		-- diag.write_good,
 		formatting.black.with({

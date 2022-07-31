@@ -11,9 +11,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " TODO: Use lsp saga
 
     " TODO: Integrate nvim-dap
-    Plug 'mfussenegger/nvim-dap'
-    Plug 'rcarriga/nvim-dap-ui'
-    Plug 'theHamsta/nvim-dap-virtual-text'
+    " Plug 'mfussenegger/nvim-dap'
+    " Plug 'rcarriga/nvim-dap-ui'
+    " Plug 'theHamsta/nvim-dap-virtual-text'
     " Plug 'Pocco81/dap-buddy.nvim', {'commit': 'dfa5e810f0fa17c3fcf5c60ab066f14406be7172'}
     Plug 'mfussenegger/nvim-dap-python'
     Plug 'nvim-telescope/telescope-dap.nvim'
@@ -52,7 +52,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-obsession'
 
     " Merge tmux statusline and nvim statusline
-    " Plug 'vimpostor/vim-tpipeline'
+    Plug 'vimpostor/vim-tpipeline'
 
     " Indent markers
     Plug 'lukas-reineke/indent-blankline.nvim'
@@ -87,8 +87,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     Plug 'nvim-lua/plenary.nvim'
     Plug 'onsails/lspkind-nvim'
-    " Sticky signature
-    " Plug 'ray-x/lsp_signature.nvim'
 
     " Autocomplete sources
     Plug 'hrsh7th/nvim-cmp'
@@ -149,6 +147,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Other ls
     Plug 'jose-elias-alvarez/null-ls.nvim'
+    Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
     " Tmux pane switching
     Plug 'christoomey/vim-tmux-navigator'
@@ -185,7 +184,7 @@ let g:tpipeline_cursormoved = 1
 :lua require("zet")
 :lua require("git_signs")
 :lua require("pairs")
-:lua require("dapconfig")
+" :lua require("dapconfig")
 
 let g:conjure#filetypes = ["clojure", "fennel", "janet", "racket", "scheme", "sicp"]
 let g:conjure#filetype#sicp = "conjure.client.racket.stdio"

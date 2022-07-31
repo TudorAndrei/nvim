@@ -86,7 +86,11 @@ nvim_lsp.pyright.setup({
     },
 })
 
-require("lspconfig").r_language_server.setup({
+nvim_lsp.r_language_server.setup({
+    on_attach = on_attach,
+})
+
+nvim_lsp.tsserver.setup({
     on_attach = on_attach,
 })
 
@@ -158,11 +162,11 @@ cmp.setup({
     },
 })
 
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
-cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
+-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+-- cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 
 -- Racket
-require("lspconfig").racket_langserver.setup({
+nvim_lsp.racket_langserver.setup({
     on_attach = on_attach,
 })
 
@@ -179,7 +183,7 @@ else
     print("Unsupported system for sumneko")
 end
 
-require("lspconfig").sumneko_lua.setup({
+nvim_lsp.sumneko_lua.setup({
     cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
     on_attach = on_attach,
     settings = {
