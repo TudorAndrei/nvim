@@ -1,0 +1,50 @@
+{
+    "name": "pytorch-snippets",
+    "displayName": "PyTorch Snippets",
+    "description": "PyTorch Snippets for Visual Studio Code",
+    "version": "1.0.2",
+    "publisher": "SBSnippets",
+    "author": {
+        "name": "Sven Becker",
+        "email": "SvenBecker19@gmail.com"
+    },
+    "icon": "images/pytorch-logo.png",
+    "galleryBanner": {
+        "color": "#fbfbfb",
+        "theme": "light"
+    },
+    "keywords": [
+        "torchvision",
+        "pytorch",
+        "python",
+        "examples",
+        "snippet"
+    ],
+    "bugs": {
+        "url": "https://github.com/SvenBecker/vscode-pytorch/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SvenBecker/vscode-pytorch.git"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/SvenBecker/vscode-pytorch/blob/master/README.md",
+    "engines": {
+        "vscode": "^1.25.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "python",
+                "path": "./snippets/pytorch.json"
+            },
+            {
+                "language": "python",
+                "path": "./snippets/torchvision.json"
+            }
+        ]
+    }
+}

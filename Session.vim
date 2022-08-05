@@ -10,14 +10,14 @@ endif
 let s:shortmess_save = &shortmess
 set shortmess=aoO
 badd +1 init.vim
-badd +49 lua/lsp.lua
+badd +13 lua/lsp.lua
 badd +10 plugin/keybinds.vim
 argglobal
 %argdel
 $argadd init.vim
-edit init.vim
+edit lua/lsp.lua
 argglobal
-balt lua/lsp.lua
+balt init.vim
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -26,12 +26,12 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 24) / 49)
+let s:l = 13 - ((12 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 13
+normal! 077|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -175,7 +175,7 @@ let g:tpipeline_cursormoved = 1
 :lua require("nvimtree")
 :lua require("statusline")
 :lua require("indent")
-" :lua require("null")
+:lua require("null")
 :lua require("treesitter")
 :lua require("csscolors")
 :lua require("todo")
