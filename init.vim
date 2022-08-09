@@ -57,7 +57,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'famiu/bufdelete.nvim'
 
     " Generate Docstrings
-    Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() }, 'for': ['python'] }
+    Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() }, 'for': ['vim', 'python']}
 
     " Comment lines
     Plug 'tpope/vim-commentary'

@@ -1,6 +1,6 @@
 local home = vim.fn.expand("~/cave/littlebrain")
 require('telekasten').setup({
-    home         = home,
+    home = home,
 
     -- if true, telekasten will be enabled when opening a note within the configured home
     take_over_my_home = true,
@@ -9,9 +9,9 @@ require('telekasten').setup({
     --                               and thus the telekasten syntax will not be loaded either
     auto_set_filetype = true,
 
-    dailies      = home .. '/' .. 'notes',
-    weeklies     = home .. '/' .. 'weekly',
-    templates    = home .. '/' .. 'templates',
+    dailies   = home .. '/' .. 'notes',
+    weeklies  = home .. '/' .. 'weekly',
+    templates = home .. '/' .. 'templates',
 
     -- image subdir for pasting
     -- subdir name
@@ -19,7 +19,7 @@ require('telekasten').setup({
     image_subdir = "img",
 
     -- markdown file extension
-    extension    = ".md",
+    extension = ".md",
 
     -- following a link to a non-existing note will create it
     follow_creates_nonexisting = true,
@@ -36,7 +36,7 @@ require('telekasten').setup({
 
     -- template for newly created weekly notes (goto_thisweek)
     -- set to `nil` or do not specify if you do not want a template
-    template_new_weekly= home .. '/' .. 'templates/weekly.md',
+    template_new_weekly = home .. '/' .. 'templates/weekly.md',
 
     -- image link style
     -- wiki:     ![[image name]]

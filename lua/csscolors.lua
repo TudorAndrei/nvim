@@ -1,5 +1,5 @@
 require 'colorizer'.setup {
-  'css';
-  'javascript';
-  'html';
+    'css';
+    'javascript';
+    'html';
 }

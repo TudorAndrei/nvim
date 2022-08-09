@@ -2,25 +2,26 @@
 
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
-	return
+    return
 end
 
 
 local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
 
-	-- Enable completion triggered by <c-x><c-o>
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+    local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+    end
 
-	-- Mappings.
-	local opts = { noremap=true, silent=true }
+    -- Enable completion triggered by <c-x><c-o>
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
+    -- Mappings.
+    local opts = { noremap = true, silent = true }
+
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
     buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     vim.keymap.set("n", "gd", require("lspsaga.definition").preview_definition, opts)
     -- buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -72,18 +73,18 @@ end
 local formatting = null_ls.builtins.formatting
 -- local diag = null_ls.builtins.diagnostics
 null_ls.setup({
-	on_attach = on_attach,
-	sources = {
-		formatting.markdownlint.with({
-			filetypes = { "markdown", "rmd", "telekasten" },
-		}),
-		-- formatting.stylua,
-		formatting.isort,
+    on_attach = on_attach,
+    sources = {
+        formatting.markdownlint.with({
+            filetypes = { "markdown", "rmd", "telekasten" },
+        }),
+        -- formatting.stylua,
+        formatting.isort,
         formatting.prettier,
-		formatting.latexindent,
-		-- diag.write_good,
-		formatting.black.with({
-			extra_args = { "--fast" },
-		}),
-	},
+        formatting.latexindent,
+        -- diag.write_good,
+        formatting.black.with({
+            extra_args = { "--fast" },
+        }),
+    },
 })

@@ -7,4 +7,3 @@ parser_config.racket = {
     filetype = "rkt", -- if filetype does not agrees with parser name
     used_by = { "sicp" }
 }
-
