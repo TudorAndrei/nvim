@@ -4,6 +4,20 @@ require 'nvim-tree'.setup {
     diagnostics = {
         enable = false,
     },
+    filters = {
+        custom = { "^.git$",
+            ".*.aux$",
+            ".*.bbl$",
+            ".*.fls$",
+            ".*.fdb_latexmk$",
+            ".*.toc$",
+            ".*.out$",
+            ".*.bcf$",
+            ".*.lbx$",
+            ".*.run.xml$",
+            ".*.synctex.gz$" },
+        exclude = { "data", ".env" },
+    },
     view = {
         width = 30,
         side = 'left',

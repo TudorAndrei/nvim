@@ -13,9 +13,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'rcarriga/nvim-dap-ui'
     " Plug 'theHamsta/nvim-dap-virtual-text'
     " Plug 'Pocco81/dap-buddy.nvim', {'commit': 'dfa5e810f0fa17c3fcf5c60ab066f14406be7172'}
-    Plug 'mfussenegger/nvim-dap-python'
-    Plug 'nvim-telescope/telescope-dap.nvim'
+    " Plug 'mfussenegger/nvim-dap-python'
+    " Plug 'nvim-telescope/telescope-dap.nvim'
+
     Plug 'wellle/targets.vim'
+    Plug 'gpanders/editorconfig.nvim'
 
 
     Plug 'vim-test/vim-test'
@@ -66,8 +68,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'Mofiqul/dracula.nvim'
     Plug 'folke/lsp-colors.nvim'
 
-
-
     " Autocomplete, lsp and the other shenanigans
     Plug 'neovim/nvim-lspconfig'
     Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
@@ -96,6 +96,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
     Plug 'kdheepak/cmp-latex-symbols'
     Plug 'PaterJason/cmp-conjure'
+    Plug 'davidsierradz/cmp-conventionalcommits'
     " Plug 'jc-doyle/cmp-pandoc-references'
     " Not working
     Plug 'aspeddro/cmp-pandoc.nvim'
@@ -127,7 +128,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'ferrine/md-img-paste.vim', {'for': ['markdown', 'rmd']}
 
     " Latex
-    Plug 'lervag/vimtex', {'for': 'tex'}
+    Plug 'lervag/vimtex'
 
     " align tables
     Plug 'junegunn/vim-easy-align', {'for': ['markdown', 'rmd']}
