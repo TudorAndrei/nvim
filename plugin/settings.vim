@@ -107,3 +107,9 @@ let g:loaded_tar      = 1
 
 let g:loaded_zipPlugin= 1
 let g:loaded_zip      = 1
+
+augroup _conjure_sponsor
+    autocmd!
+    autocmd BufWinEnter "conjure-log-*" "silent s/; Sponsored by @.*//e")
+augroup end
+let g:conjure#client_on_load = v:false
