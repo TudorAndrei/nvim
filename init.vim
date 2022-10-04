@@ -96,7 +96,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
     Plug 'kdheepak/cmp-latex-symbols'
     Plug 'PaterJason/cmp-conjure'
-    Plug 'davidsierradz/cmp-conventionalcommits'
     " Plug 'jc-doyle/cmp-pandoc-references'
     " Not working
     Plug 'aspeddro/cmp-pandoc.nvim'

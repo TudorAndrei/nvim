@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- Mappings.
-    local opts = { noremap = true, silent = true, buffer=bufnr }
+    local opts = { noremap = true, silent = true, buffer = bufnr }
 
     vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     vim.keymap.set("n", "gd", require("lspsaga.definition").peek_definition, opts)
@@ -124,7 +124,7 @@ cmp.setup({
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<C-n>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -134,7 +134,7 @@ cmp.setup({
             end
         end, { "i", "s" }),
 
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ["<C-p>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
@@ -153,7 +153,6 @@ cmp.setup({
         -- { name = "pandoc_references" },
         { name = "conjure" },
         { name = "nvim_lua" },
-        { name = "conventionalcommits" },
         -- { name = "latex_symbols"},
         { name = "emoji" },
         { name = "path" },

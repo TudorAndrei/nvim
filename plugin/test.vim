@@ -7,4 +7,4 @@ nmap <silent> <leader>tv :TestVisit<CR>
 
 let test#strategy = 'vimux'
 let test#python#runner = 'pytest'
-let test#python#pytest#options = '--html=report.html --self-contained-html'
+let test#python#pytest#options = '-s'
