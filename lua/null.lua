@@ -16,11 +16,11 @@ local on_attach = function(client, bufnr)
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    vim.keymap.set("n", "gd", require("lspsaga.definition").peek_definition, opts)
+    vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
     -- vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     -- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     -- LSP Saga
-    vim.keymap.set("n", "K", require("lspsaga.hover").render_hover_doc, opts)
+    vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
     vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     vim.keymap.set("i", "<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
@@ -34,7 +34,7 @@ local on_attach = function(client, bufnr)
 
     vim.keymap.set("n", "<Leader>gf", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
     -- vim.keymap.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    vim.keymap.set("n", "<Leader>rn", require("lspsaga.rename").lsp_rename, opts)
+    vim.keymap.set("n", "<Leader>rn", "<cmd>Lspsaga rename<CR>", opts)
     vim.keymap.set("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
     vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
@@ -44,8 +44,8 @@ local on_attach = function(client, bufnr)
 
     -- vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
     -- vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-    vim.keymap.set("n", "[d", require("lspsaga.diagnostic").goto_prev, opts)
-    vim.keymap.set("n", "]d", require("lspsaga.diagnostic").goto_next, opts)
+    vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+    vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
     -- or jump to error
     vim.keymap.set("n", "[e", function()
         require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
