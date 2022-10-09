@@ -39,8 +39,6 @@ require('telekasten').setup({
     template_new_weekly = home .. '/' .. 'templates/weekly.md',
 
     -- image link style
-    -- wiki:     ![[image name]]
-    -- markdown: ![](image_subdir/xxxxx.png)
     image_link_style = "markdown",
 
     -- integrate with calendar-vim
