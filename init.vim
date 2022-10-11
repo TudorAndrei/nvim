@@ -161,8 +161,12 @@ call plug#end()
 colorscheme dracula
 set termguicolors
 
-if $CONDA_PREFIX == ""
-  let g:current_python_path=$CONDA_PYTHON_EXE
+if $CONDA_PREFIX == "/home/tudor/.mambaf"
+    if $VIRTUAL_ENV != ""
+      let g:current_python_path=$VIRTUAL_ENV.'/bin/python'
+  else
+      let g:current_python_path=$CONDA_EXE
+  endif
 else
   let g:current_python_path=$CONDA_PREFIX.'/bin/python'
 endif
