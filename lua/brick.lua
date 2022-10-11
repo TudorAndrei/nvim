@@ -9,9 +9,17 @@ require("mason").setup {
 }
 require("mason-tool-installer").setup {
     ensure_installed = { "stylua", "shfmt", "shellcheck", "black", "isort", "vint" },
-    auto_update = false,
+    auto_update = true,
     run_on_start = true,
 }
 require("mason-lspconfig").setup({
     automatic_installation = true,
+})
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'MasonToolsUpdateCompleted',
+    callback = function()
+        vim.schedule(function()
+            require("notify")("mason-tool-installer has finished")
+        end)
+    end,
 })

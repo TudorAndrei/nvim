@@ -182,6 +182,7 @@ else
 endif
 let g:tpipeline_cursormoved = 1
 
+:lua vim.notify = require("notify")
 :lua require('patient')
 " :lua require('racket-sitter')
 :lua require("lsp")
