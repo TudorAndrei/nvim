@@ -1,5 +1,5 @@
 local pypath = vim.g.current_python_path
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local lspkind = require("lspkind")
 local cmp = require("cmp")
 local nvim_lsp = require("lspconfig")
@@ -82,35 +82,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts)
 end
 
-nvim_lsp.pyright.setup({
-    on_attach = on_attach,
-    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    settings = {
-        pyright = {
-            disableLanguageServices = false,
-        },
-        python = {
-            pythonPath = pypath,
-            analysis = {
-                autoSearchPaths = true,
-                diagnosticMode = "workspace",
-                useLibraryCodeForTypes = false,
-                typeCheckingMode = false,
-            },
-        },
-    },
-    flags = {
-        debounce_text_changes = 150,
-    },
-})
 
-nvim_lsp.r_language_server.setup({
-    on_attach = on_attach,
-})
-
-nvim_lsp.tsserver.setup({
-    on_attach = on_attach,
-})
 
 cmp.setup({
     snippet = {
@@ -181,29 +153,44 @@ cmp.setup({
     },
 })
 
--- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
--- cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
+nvim_lsp.pyright.setup({
+    on_attach = on_attach,
+    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    settings = {
+        pyright = {
+            disableLanguageServices = false,
+        },
+        python = {
+            pythonPath = pypath,
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = false,
+                typeCheckingMode = false,
+            },
+        },
+    },
+    flags = {
+        debounce_text_changes = 150,
+    },
+})
+-- r lsp
+nvim_lsp.r_language_server.setup({
+    on_attach = on_attach,
+})
 
+-- typescrpt
+nvim_lsp.tsserver.setup({
+    on_attach = on_attach,
+})
 -- Racket
 nvim_lsp.racket_langserver.setup({
     on_attach = on_attach,
 })
 
--- Lua
-USER = vim.fn.expand("$USER")
 
-local sumneko_root_path = ""
-local sumneko_binary = ""
-
-if vim.fn.has("unix") == 1 then
-    sumneko_root_path = "/home/" .. USER .. "/cave/lua-language-server"
-    sumneko_binary = "/home/" .. USER .. "/cave/lua-language-server/bin/lua-language-server"
-else
-    print("Unsupported system for sumneko")
-end
 
 nvim_lsp.sumneko_lua.setup({
-    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
     on_attach = on_attach,
     settings = {
         Lua = {
@@ -225,6 +212,6 @@ nvim_lsp.sumneko_lua.setup({
 })
 
 -- Vim ls
-require("lspconfig").vimls.setup({
+nvim_lsp.vimls.setup({
     on_attach = on_attach,
 })

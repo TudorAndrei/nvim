@@ -70,6 +70,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Autocomplete, lsp and the other shenanigans
     Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
+    Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
+
+
     Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -82,7 +87,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/popup.nvim'
 
 
-    Plug 'nvim-lua/plenary.nvim'
+    " LSP pictograms
     Plug 'onsails/lspkind-nvim'
 
     " Autocomplete sources
@@ -101,6 +106,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'aspeddro/cmp-pandoc.nvim'
     " Plug 'jbyuki/nabla.nvim'
 
+    " Function signature
     Plug 'ray-x/lsp_signature.nvim'
 
     " Snipets - use utilsnips and luasnip
@@ -112,7 +118,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'kyazdani42/nvim-web-devicons'
 
     " File explorer
-    Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
 
     " Statusline and bufferline
     Plug 'nvim-lualine/lualine.nvim'
@@ -142,6 +148,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Pretty errors
     Plug 'folke/trouble.nvim'
+    " Todo
+    Plug 'folke/todo-comments.nvim'
 
     " Other ls
     Plug 'jose-elias-alvarez/null-ls.nvim'
@@ -150,11 +158,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Tmux pane switching
     Plug 'christoomey/vim-tmux-navigator'
 
+    " Lisp things
     Plug 'wlangstroth/vim-racket'
     Plug 'Olical/conjure',{ 'branch': 'develop', 'for': ['racket', 'sicp'] }
 
-    " Todo
-    Plug 'folke/todo-comments.nvim'
+
+    " Lua functions
+    Plug 'nvim-lua/plenary.nvim'
 
 call plug#end()
 
@@ -186,6 +196,7 @@ let g:tpipeline_cursormoved = 1
 :lua require("zet")
 :lua require("git_signs")
 :lua require("pairs")
+:lua require("brick")
 " :lua require("dapconfig")
 
 let g:conjure#filetypes = ["clojure", "fennel", "janet", "racket", "scheme", "sicp"]
