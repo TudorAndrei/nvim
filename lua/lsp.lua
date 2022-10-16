@@ -74,7 +74,7 @@ local on_attach = function(client, bufnr)
     end, { silent = true, noremap = true })
 
     vim.keymap.set("n", "<Leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-    vim.keymap.set("n", "<Leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    vim.keymap.set("n", "<Leader>fm", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
 
     -- LSP SAGA
     vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)

@@ -25,6 +25,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Pretty Notifications
     Plug 'rcarriga/nvim-notify'
+    " LSP Status
+    Plug 'j-hui/fidget.nvim'
 
     " Neovim Notebooks
     " Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
