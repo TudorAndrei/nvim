@@ -1,4 +1,4 @@
-let g:mapleader = ","
+let g:mapleader = ','
 
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -35,8 +35,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jamestomasino/vim-writingsyntax'
 
     " Notes
-    Plug 'renerocksai/telekasten.nvim'
-    Plug 'renerocksai/calendar-vim'
+    Plug 'renerocksai/telekasten.nvim', {'for' :['vim', 'telekasten']}
+    Plug 'renerocksai/calendar-vim', {'for' :['vim', 'telekasten']}
 
     " GitSigns
     Plug 'lewis6991/gitsigns.nvim'

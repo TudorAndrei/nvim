@@ -1,7 +1,38 @@
 local lualine = require("lualine")
 
+local function mysplit(inputstr, sep)
+    if sep == nil then
+        sep = "%s"
+    end
+    local t = {}
+    for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+        table.insert(t, str)
+    end
+    return t
+end
+
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
+end
+
+local function conda_env()
+    local conda_pref = os.getenv("CONDA_PREFIX")
+    if string.find(conda_pref, "envs") then
+        local env = mysplit(conda_pref, "/")
+        return (string.format("🐍%s", env[#env]))
+    else
+        return ""
+    end
+end
+
+local function venv_env()
+    local venv = os.getenv("VIRTUAL_ENV")
+    if venv then
+        local env = mysplit(venv, "/")
+        return (string.format("(%s)", env[#env]))
+    else
+        return ""
+    end
 end
 
 local diagnostics = {
@@ -67,7 +98,7 @@ local config = {
         lualine_b = { branch },
         lualine_c = { "filename", diagnostics },
         lualine_x = { diff, "encoding", { getWords } },
-        lualine_y = { filetype },
+        lualine_y = { filetype, conda_env, venv_env},
         lualine_z = { location },
     },
     inactive_sections = {
@@ -87,7 +118,7 @@ require("bufferline").setup({
         show_close_icon = false,
         separator_style = { "|" },
         offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center" } },
-        show_tab_indicators = true
+        show_tab_indicators = true,
     },
 })
-require "fidget".setup {}
+require("fidget").setup({})
