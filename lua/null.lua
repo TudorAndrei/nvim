@@ -74,7 +74,7 @@ null_ls.setup({
 		formatting.isort.with({
 			extra_args = { "--profile", " black" },
 		}),
-		-- diag.pydocstyle,
+		diag.pydocstyle,
 		--
 		-- js
 		formatting.prettier,
