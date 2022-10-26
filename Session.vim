@@ -13,12 +13,33 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
+badd +82 lua/null.lua
 argglobal
 %argdel
 $argadd init.vim
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
 tabnext
+edit lua/null.lua
+argglobal
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+67
+normal! zo
+69
+normal! zo
+let s:l = 82 - ((40 * winheight(0) + 26) / 53)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 82
+normal! 031|
 tabnext 2
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
