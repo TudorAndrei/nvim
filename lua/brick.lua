@@ -8,7 +8,7 @@ require("mason").setup({
 	},
 })
 require("mason-tool-installer").setup({
-	ensure_installed = { "stylua", "shfmt", "shellcheck", "black", "isort", "vint", "pylama" , "pyright", "lua-language-server", "selene"},
+	ensure_installed = { "stylua", "shfmt", "shellcheck", "black", "isort", "vint", "pylama" , "pyright", "lua-language-server", "selene", "prettierd"},
 	auto_update = true,
 	run_on_start = true,
 })

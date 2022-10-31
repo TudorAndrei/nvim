@@ -25,6 +25,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Pretty Notifications
     Plug 'rcarriga/nvim-notify'
+
     " LSP Status
     Plug 'j-hui/fidget.nvim'
 
@@ -173,8 +174,8 @@ call plug#end()
 colorscheme dracula
 set termguicolors
 
-if $CONDA_PREFIX == "/home/tudor/.mambaf"
-    if $VIRTUAL_ENV != ""
+if $CONDA_PREFIX == '/home/tudor/.mambaf'
+    if $VIRTUAL_ENV != ''
       let g:current_python_path=$VIRTUAL_ENV.'/bin/python'
   else
       let g:current_python_path=$CONDA_EXE
@@ -192,7 +193,6 @@ let g:tpipeline_cursormoved = 1
 :lua require("nvimtree")
 :lua require("statusline")
 :lua require("indent")
-:lua require("null")
 :lua require("treesitter")
 :lua require("csscolors")
 :lua require("todo")
@@ -204,3 +204,4 @@ let g:tpipeline_cursormoved = 1
 
 let g:conjure#filetypes = ["clojure", "fennel", "janet", "racket", "scheme", "sicp"]
 let g:conjure#filetype#sicp = "conjure.client.racket.stdio"
+let g:python3_host_prog = '/home/tudor/.mambaf/bin/python'

@@ -9,15 +9,22 @@ if not snip_status_ok then
     return
 end
 
+local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+if not null_ls_status_ok then
+    return
+end
+local formatting = null_ls.builtins.formatting
+local diag = null_ls.builtins.diagnostics
+
 lspkind.init()
 require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets/friendly-snips/" } })
 require("cmp_pandoc").setup()
 
-require "lsp_signature".setup({
+require("lsp_signature").setup({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     handler_opts = {
-        border = "rounded"
-    }
+        border = "rounded",
+    },
 })
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -27,7 +34,6 @@ for type, icon in pairs(signs) do
 end
 
 local on_attach = function(client, bufnr)
-
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -82,8 +88,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts)
 end
 
-
-
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -121,7 +125,7 @@ cmp.setup({
         { name = "luasnip" },
         { name = "buffer" },
         { name = "cmp_pandoc" },
-        { name = 'nvim-lsp_signature_help' },
+        { name = "nvim-lsp_signature_help" },
         -- { name = "pandoc_references" },
         { name = "conjure" },
         { name = "nvim_lua" },
@@ -132,19 +136,9 @@ cmp.setup({
     },
     formatting = {
         format = lspkind.cmp_format({
-            with_text = true,
-            menu = {
-                nvim_lsp = "[lsp]",
-                nvim_lua = "[api]",
-                buffer = "[buf]",
-                path = "[path]",
-                cmp_pandoc = "[pdc]",
-                luasnip = "[snip]",
-                gh_issues = "[issues]",
-                omni = "[omni]",
-                conjure = "[lisp]",
-                conventionalcommits = "[git]",
-            },
+            mode = "symbol", -- show only symbol annotations
+            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         }),
     },
 
@@ -175,20 +169,18 @@ nvim_lsp.pyright.setup({
     },
 })
 -- r lsp
-nvim_lsp.r_language_server.setup({
-    on_attach = on_attach,
-})
+-- nvim_lsp.r_language_server.setup({
+--     on_attach = on_attach,
+-- })
 
 -- typescrpt
-nvim_lsp.tsserver.setup({
-    on_attach = on_attach,
-})
+-- nvim_lsp.tsserver.setup({
+--     on_attach = on_attach,
+-- })
 -- Racket
-nvim_lsp.racket_langserver.setup({
-    on_attach = on_attach,
-})
-
-
+-- nvim_lsp.racket_langserver.setup({
+--     on_attach = on_attach,
+-- })
 
 nvim_lsp.sumneko_lua.setup({
     on_attach = on_attach,
@@ -212,6 +204,43 @@ nvim_lsp.sumneko_lua.setup({
 })
 
 -- Vim ls
-nvim_lsp.vimls.setup({
+-- nvim_lsp.vimls.setup({
+--     on_attach = on_attach,
+-- })
+
+null_ls.setup({
     on_attach = on_attach,
+    sources = {
+        -- python
+        formatting.black.with({
+            extra_args = { "--fast" },
+        }),
+        formatting.isort.with({
+            extra_args = { "--profile", " black" },
+        }),
+        diag.pylama.with({
+            "--from-stdin",
+            "$FILENAME",
+            "-f",
+            "json",
+            "-l",
+            "eradicate,mccabe,pycodestyle,pydocstyle,pyflakes,pylint",
+            "-m",
+            "88",
+        }),
+        --
+        -- js
+        formatting.prettierd,
+        formatting.latexindent,
+        formatting.markdownlint.with({
+            filetypes = { "markdown", "rmd", "telekasten" },
+        }),
+        -- diag.write_good,
+        --
+        formatting.stylua,
+        -- vim
+        diag.vint,
+        -- lua
+        diag.selene,
+    },
 })
