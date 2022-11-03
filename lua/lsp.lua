@@ -263,5 +263,7 @@ null_ls.setup({
 		diag.vint,
 		-- lua
 		diag.selene,
+		-- toml
+		formatting.taplo,
 	},
 })

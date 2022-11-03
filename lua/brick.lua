@@ -19,6 +19,7 @@ require("mason-tool-installer").setup({
 		"pyright",
 		"lua-language-server",
 		"selene",
+		"taplo",
 		"prettierd",
 	},
 	auto_update = true,
