@@ -18,6 +18,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     Plug 'wellle/targets.vim'
     Plug 'gpanders/editorconfig.nvim'
+    Plug 'simrat39/symbols-outline.nvim'
 
 
     Plug 'vim-test/vim-test'
@@ -199,6 +200,7 @@ let g:tpipeline_cursormoved = 1
 :lua require("git_signs")
 :lua require("pairs")
 :lua require("brick")
+:lua require("outline")
 " :lua require("dapconfig")
 
 let g:conjure#filetypes = ["clojure", "fennel", "janet", "racket", "scheme", "sicp"]
