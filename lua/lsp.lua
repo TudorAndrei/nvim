@@ -167,67 +167,72 @@ cmp.setup({
 		native_menu = false,
 	},
 })
-
-nvim_lsp.pyright.setup({
-	on_attach = on_attach,
-	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-	settings = {
-		pyright = {
-			disableLanguageServices = false,
+require("mason").setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
 		},
-		python = {
-			pythonPath = pypath,
-			analysis = {
-				autoSearchPaths = true,
-				diagnosticMode = "workspace",
-				useLibraryCodeForTypes = false,
-				typeCheckingMode = false,
-			},
-		},
-	},
-	flags = {
-		debounce_text_changes = 150,
 	},
 })
--- r lsp
--- nvim_lsp.r_language_server.setup({
---     on_attach = on_attach,
--- })
+require("mason-lspconfig").setup({
+	automatic_installation = true,
+})
 
--- typescrpt
--- nvim_lsp.tsserver.setup({
---     on_attach = on_attach,
--- })
--- Racket
--- nvim_lsp.racket_langserver.setup({
---     on_attach = on_attach,
--- })
-
-nvim_lsp.sumneko_lua.setup({
-	on_attach = on_attach,
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-				path = vim.split(package.path, ";"),
-			},
-			diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		if server_name then
+			local lspconfig = require("lspconfig")
+			lspconfig[server_name].setup({})
+		end
+	end,
+	["pyright"] = function()
+		nvim_lsp.pyright.setup({
+			on_attach = on_attach,
+			capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+			settings = {
+				pyright = {
+					disableLanguageServices = false,
+				},
+				python = {
+					pythonPath = pypath,
+					analysis = {
+						autoSearchPaths = true,
+						diagnosticMode = "workspace",
+						useLibraryCodeForTypes = false,
+						typeCheckingMode = false,
+					},
 				},
 			},
-		},
-	},
+			flags = {
+				debounce_text_changes = 150,
+			},
+		})
+	end,
+	["sumneko_lua"] = function()
+		nvim_lsp.sumneko_lua.setup({
+			on_attach = on_attach,
+			settings = {
+				Lua = {
+					runtime = {
+						version = "LuaJIT",
+						path = vim.split(package.path, ";"),
+					},
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						library = {
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+						},
+					},
+				},
+			},
+		})
+	end,
 })
-
--- Vim ls
--- nvim_lsp.vimls.setup({
---     on_attach = on_attach,
--- })
 
 null_ls.setup({
 	on_attach = on_attach,
@@ -249,7 +254,6 @@ null_ls.setup({
 			"-m",
 			"88",
 		}),
-		--
 		-- js
 		formatting.prettierd,
 		formatting.latexindent,
@@ -257,7 +261,6 @@ null_ls.setup({
 			filetypes = { "markdown", "rmd", "telekasten" },
 		}),
 		-- diag.write_good,
-		--
 		formatting.stylua,
 		-- vim
 		diag.vint,
@@ -265,5 +268,7 @@ null_ls.setup({
 		diag.selene,
 		-- toml
 		formatting.taplo,
+		-- rust
+		formatting.rustfmt,
 	},
 })
