@@ -270,5 +270,7 @@ null_ls.setup({
 		formatting.taplo,
 		-- rust
 		formatting.rustfmt,
+		formatting.yamlfmt,
+		null_ls.builtins.completion.spell,
 	},
 })
