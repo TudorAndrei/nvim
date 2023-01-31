@@ -8,6 +8,7 @@ local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
 	return
 end
+require("lspsaga").setup({})
 
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
@@ -64,9 +65,9 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
 	-- vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	-- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	-- LSP Saga
-	vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+	-- vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	vim.keymap.set("i", "<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
@@ -148,7 +149,7 @@ cmp.setup({
 		{ name = "cmp_pandoc" },
 		{ name = "nvim-lsp_signature_help" },
 		-- { name = "pandoc_references" },
-		{ name = "conjure" },
+		-- { name = "conjure" },
 		{ name = "nvim_lua" },
 		-- { name = "latex_symbols"},
 		{ name = "emoji" },

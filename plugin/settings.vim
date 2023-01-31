@@ -40,7 +40,7 @@ set smartindent
 " Good auto indent
 set autoindent
 " Always display the status line
-" set laststatus=3
+set laststatus=3
 " tell vim what the background color looks like
 set background=dark
 " We don't need to see things like -- INSERT -- anymore

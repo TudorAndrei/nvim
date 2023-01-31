@@ -37,8 +37,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jamestomasino/vim-writingsyntax'
 
     " Notes
-    Plug 'renerocksai/telekasten.nvim', {'for' :['vim', 'telekasten']}
-    Plug 'renerocksai/calendar-vim', {'for' :['vim', 'telekasten']}
+    Plug 'renerocksai/telekasten.nvim'
+    Plug 'renerocksai/calendar-vim'
 
     " GitSigns
     Plug 'lewis6991/gitsigns.nvim'
@@ -104,7 +104,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-omni'
     Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
     Plug 'kdheepak/cmp-latex-symbols'
-    Plug 'PaterJason/cmp-conjure'
+    " Plug 'PaterJason/cmp-conjure'
     " Plug 'jc-doyle/cmp-pandoc-references'
     " Not working
     Plug 'aspeddro/cmp-pandoc.nvim'
