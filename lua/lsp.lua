@@ -8,7 +8,12 @@ local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
 	return
 end
-require("lspsaga").setup({})
+require("lspsaga").setup({
+	ui = {
+		title = false,
+		border = false,
+	},
+})
 
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
@@ -163,9 +168,8 @@ cmp.setup({
 			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 		}),
 	},
-
-	experimental = {
-		native_menu = false,
+	view = {
+		entries = "native",
 	},
 })
 require("mason").setup({

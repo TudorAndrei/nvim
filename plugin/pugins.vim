@@ -32,5 +32,11 @@ let g:closetag_close_shortcut = '<leader>>'
 
 let g:polyglot_disabled = ['python']
 
-" Set comments for vim-commentary
-autocmd FileType rmd,md setlocal commentstring=\ <!--\ %s\ -->
+
+let g:doge_mapping='<Leader>t'
+let g:doge_doc_standard_python = 'google'
+
+set completeopt=menu,menuone,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+let g:nvim_tree_tree_ignore = ['.git', '__pycache__', 'Session.vim']

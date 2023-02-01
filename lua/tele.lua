@@ -6,4 +6,4 @@ require("telescope").setup({
 	},
 })
 
-require("trouble").setup({})
+require("leap").add_default_mappings()

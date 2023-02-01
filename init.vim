@@ -50,7 +50,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'lewis6991/impatient.nvim'
 
     " Navgation
-    Plug 'ggandor/lightspeed.nvim'
+    " Plug 'ggandor/lightspeed.nvim'
+    Plug 'ggandor/leap.nvim'
 
     " Vin Session automanagement
     Plug 'tpope/vim-obsession'
@@ -186,20 +187,14 @@ endif
 let g:tpipeline_cursormoved = 1
 
 :lua vim.notify = require("notify")
-:lua require('patient')
+:lua require("patient")
 :lua require("lsp")
 :lua require("tele")
-:lua require("nvimtree")
-:lua require("statusline")
-:lua require("indent")
 :lua require("treesitter")
-:lua require("csscolors")
-:lua require("todo")
 :lua require("zet")
-:lua require("git_signs")
-:lua require("pairs")
 :lua require("brick")
-:lua require("outline")
+:lua require("ui")
+:lua require("visual")
 " :lua require("dapconfig")
 
 let g:conjure#filetypes = ['clojure', 'fennel', 'janet', 'racket', 'scheme', 'sicp']

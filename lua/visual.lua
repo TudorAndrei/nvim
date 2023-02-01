@@ -1,3 +1,17 @@
+require("symbols-outline").setup()
+require("nvim-autopairs").setup({
+	enable_check_bracket_line = false,
+})
+require("indent_blankline").setup({
+	char = "|",
+	buftype_exclude = { "terminal", "nofile" },
+	filetype_exclude = {
+		"help",
+		"NvimTree",
+		"Trouble",
+	},
+})
+
 local status_ok, gitsigns = pcall(require, "gitsigns")
 if not status_ok then
 	return
@@ -100,4 +114,10 @@ gitsigns.setup({
 		-- Text object
 		-- map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
 	end,
+})
+
+require("colorizer").setup({
+	"css",
+	"javascript",
+	"html",
 })

@@ -12,7 +12,7 @@ nnoremap <C-l> <C-W><C-L>
 
 tnoremap <Esc> <C-\><C-n>
 
-let g:doge_mapping='<Leader>t'
-let g:doge_doc_standard_python = 'google'
+nnoremap <leader>/ :Commentary<CR>
+vnoremap <leader>/ :Commentary<CR>
 
-
+nnoremap <silent><C-n> :NvimTreeToggle<CR>
