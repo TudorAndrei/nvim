@@ -55,7 +55,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Vin Session automanagement
     Plug 'tpope/vim-obsession'
 
-
     " Indent markers
     Plug 'lukas-reineke/indent-blankline.nvim'
 
@@ -175,8 +174,8 @@ call plug#end()
 colorscheme dracula
 set termguicolors
 
-if $CONDA_PREFIX == '/home/tudor/.mambaf'
-    if $VIRTUAL_ENV != ''
+if $CONDA_PREFIX ==? '/home/tudor/.mambaf'
+    if $VIRTUAL_ENV !=? ''
       let g:current_python_path=$VIRTUAL_ENV.'/bin/python'
   else
       let g:current_python_path=$CONDA_EXE
@@ -203,6 +202,6 @@ let g:tpipeline_cursormoved = 1
 :lua require("outline")
 " :lua require("dapconfig")
 
-let g:conjure#filetypes = ["clojure", "fennel", "janet", "racket", "scheme", "sicp"]
-let g:conjure#filetype#sicp = "conjure.client.racket.stdio"
+let g:conjure#filetypes = ['clojure', 'fennel', 'janet', 'racket', 'scheme', 'sicp']
+let g:conjure#filetype#sicp = 'conjure.client.racket.stdio'
 let g:python3_host_prog = '/home/tudor/.mambaf/bin/python'
