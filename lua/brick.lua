@@ -4,6 +4,7 @@ require("mason-tool-installer").setup({
 		"shfmt",
 		"shellcheck",
 		"black",
+		"ruff",
 		"isort",
 		"vint",
 		"pylama",

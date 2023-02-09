@@ -249,13 +249,20 @@ null_ls.setup({
 		formatting.isort.with({
 			extra_args = { "--profile", " black" },
 		}),
+		diag.ruff.with({
+			"-n",
+			"-e",
+			"--stdin-filename",
+			"$FILENAME",
+			"-",
+		}),
 		diag.pylama.with({
 			"--from-stdin",
 			"$FILENAME",
 			"-f",
 			"json",
 			"-l",
-			"eradicate,mccabe,pycodestyle,pydocstyle,pyflakes,pylint",
+			"eradicate,pydocstyle,vulture,mypy",
 			"-m",
 			"88",
 		}),
