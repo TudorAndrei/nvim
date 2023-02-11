@@ -16,12 +16,18 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'mfussenegger/nvim-dap-python'
     " Plug 'nvim-telescope/telescope-dap.nvim'
 
+    " Multiple targets for commands
     Plug 'wellle/targets.vim'
-    Plug 'gpanders/editorconfig.nvim'
+
+    " Plug 'gpanders/editorconfig.nvim'
+
+    " Project outline
     Plug 'simrat39/symbols-outline.nvim'
 
 
-    Plug 'vim-test/vim-test'
+    " TODO: Find better testing plugin
+    " Plug 'vim-test/vim-test'
+
     Plug 'preservim/vimux'
 
     " Pretty Notifications
@@ -165,7 +171,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Lisp things
     Plug 'wlangstroth/vim-racket'
     Plug 'Olical/conjure',{ 'branch': 'develop', 'for': ['racket', 'sicp'] }
-
 
     " Lua functions
     Plug 'nvim-lua/plenary.nvim'
