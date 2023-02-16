@@ -11,7 +11,7 @@ end
 require("lspsaga").setup({
 	ui = {
 		title = false,
-		border = false,
+		-- border = false,
 	},
 })
 
@@ -77,7 +77,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("i", "<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
 	-- Not properly handligh certain symbols
-	-- vim.keymap.set("n", "gs", require("lspsaga.signaturehelp").signature_help, { silent = true,noremap = true})
+	-- vim.keymap.set("n", "gs", require("lspsaga.signaturehelp").signature_help, { silent = true, noremap = true })
 
 	-- not using workspace folders
 	-- vim.keymap.set("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
@@ -152,7 +152,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "cmp_pandoc" },
-		{ name = "nvim-lsp_signature_help" },
+		-- { name = "nvim_lsp_signature_help" },
 		-- { name = "pandoc_references" },
 		-- { name = "conjure" },
 		{ name = "nvim_lua" },
@@ -167,6 +167,10 @@ cmp.setup({
 			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 		}),
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 	view = {
 		entries = "native",
@@ -215,46 +219,39 @@ require("mason-lspconfig").setup_handlers({
 			},
 		})
 	end,
-	["sumneko_lua"] = function()
-		nvim_lsp.sumneko_lua.setup({
-			on_attach = on_attach,
-			settings = {
-				Lua = {
-					runtime = {
-						version = "LuaJIT",
-						path = vim.split(package.path, ";"),
-					},
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-						},
-					},
-				},
-			},
-		})
-	end,
+	-- ["sumneko_lua"] = function()
+	-- 	nvim_lsp.sumneko_lua.setup({
+	-- 		on_attach = on_attach,
+	-- 		settings = {
+	-- 			Lua = {
+	-- 				runtime = {
+	-- 					version = "LuaJIT",
+	-- 					path = vim.split(package.path, ";"),
+	-- 				},
+	-- 				diagnostics = {
+	-- 					globals = { "vim" },
+	-- 				},
+	-- 				workspace = {
+	-- 					library = {
+	-- 						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+	-- 						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	})
+	-- end,
 })
 
 null_ls.setup({
 	on_attach = on_attach,
 	sources = {
 		-- python
+		-- formatting.isort.with({
+		-- 	extra_args = { "--profile", " black" },
+		-- }),
 		formatting.black.with({
 			extra_args = { "--fast" },
-		}),
-		formatting.isort.with({
-			extra_args = { "--profile", " black" },
-		}),
-		diag.ruff.with({
-			"-n",
-			"-e",
-			"--stdin-filename",
-			"$FILENAME",
-			"-",
 		}),
 		diag.pylama.with({
 			"--from-stdin",

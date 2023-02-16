@@ -108,7 +108,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'hrsh7th/cmp-omni'
-    Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+    " Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
     Plug 'kdheepak/cmp-latex-symbols'
     " Plug 'PaterJason/cmp-conjure'
     " Plug 'jc-doyle/cmp-pandoc-references'
