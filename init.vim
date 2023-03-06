@@ -29,6 +29,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'vim-test/vim-test'
 
     Plug 'preservim/vimux'
+    Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 
     " Pretty Notifications
     Plug 'rcarriga/nvim-notify'
@@ -69,7 +70,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'famiu/bufdelete.nvim'
 
     " Generate Docstrings
-    Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() }, 'for': ['vim', 'python']}
+    Plug 'danymat/neogen'
 
     " Comment lines
     Plug 'tpope/vim-commentary'
@@ -92,6 +93,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'p00f/nvim-ts-rainbow'
 
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
     Plug 'nvim-telescope/telescope-media-files.nvim'
     Plug 'nvim-lua/popup.nvim'

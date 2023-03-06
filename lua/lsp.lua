@@ -1,26 +1,41 @@
 local pypath = vim.g.current_python_path
--- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local lspkind = require("lspkind")
 local cmp = require("cmp")
 local nvim_lsp = require("lspconfig")
+local neogen = require("neogen")
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
 	return
 end
+
+neogen.setup({
+	enabled = true,
+	snippet_engine = "luasnip",
+	languages = {
+		python = {
+			template = {
+				annotation_convention = "google_docstrings",
+			},
+		},
+	},
+})
 require("lspsaga").setup({
 	ui = {
 		title = false,
 		-- border = false,
 	},
 })
+require("lsp_lines").setup()
+vim.diagnostic.config({
+	virtual_text = false,
+	virtual_lines = { only_current_line = true },
+})
 
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
 	return
 end
-local formatting = null_ls.builtins.formatting
-local diag = null_ls.builtins.diagnostics
 
 lspkind.init()
 require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets/friendly-snips/" } })
@@ -83,7 +98,7 @@ local on_attach = function(client, bufnr)
 	-- vim.keymap.set("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	-- vim.keymap.set("n", "<Leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 	-- vim.keymap.set("n", "<Leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-
+	vim.keymap.set("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opts)
 	vim.keymap.set("n", "<Leader>gf", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	-- vim.keymap.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	vim.keymap.set("n", "<Leader>rn", "<cmd>Lspsaga rename<CR>", opts)
@@ -91,8 +106,9 @@ local on_attach = function(client, bufnr)
 
 	vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 
-	vim.keymap.set("n", "<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+	-- vim.keymap.set("n", "<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 	-- vim.keymap.set("n", "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	vim.keymap.set("n", "<Leader>e", "<cmd>lua require('lsp_lines').toggle()<CR>", opts)
 
 	-- vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	-- vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
@@ -132,16 +148,19 @@ cmp.setup({
 				cmp.select_next_item()
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
+			-- elseif neogen.jumpable() then
+			-- 	neogen.jump_next()
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
-
 		["<C-p>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
 			elseif luasnip.jumpable(-1) then
 				luasnip.jump(-1)
+			-- elseif neogen.jumpable() then
+			-- 	neogen.jump_prev()
 			else
 				fallback()
 			end
@@ -243,26 +262,31 @@ require("mason-lspconfig").setup_handlers({
 	-- end,
 })
 
+local formatting = null_ls.builtins.formatting
+local diag = null_ls.builtins.diagnostics
 null_ls.setup({
 	on_attach = on_attach,
 	sources = {
 		-- python
-		-- formatting.isort.with({
-		-- 	extra_args = { "--profile", " black" },
-		-- }),
+		formatting.isort.with({
+			extra_args = { "--profile", " black" },
+		}),
 		formatting.black.with({
 			extra_args = { "--fast" },
 		}),
-		diag.pylama.with({
-			"--from-stdin",
-			"$FILENAME",
-			"-f",
-			"json",
-			"-l",
-			"eradicate,pydocstyle,vulture,mypy",
-			"-m",
-			"88",
-		}),
+		diag.mypy,
+		-- diag.pycodestyle,
+		diag.pylint,
+		-- diag.pylama.with({
+		-- "--from-stdin",
+		-- "$FILENAME",
+		-- "-f",
+		-- "json",
+		-- "-l",
+		-- "eradicate,pydocstyle,vulture,mypy,vulture,pylint,pyflakes,pycodestyle",
+		-- "-m",
+		-- "88",
+		-- }),
 		-- js
 		formatting.prettierd,
 		formatting.latexindent,

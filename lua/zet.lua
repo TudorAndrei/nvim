@@ -7,7 +7,8 @@ require("telekasten").setup({
 
 	-- auto-set telekasten filetype: if false, the telekasten filetype will not be used
 	--                               and thus the telekasten syntax will not be loaded either
-	auto_set_filetype = true,
+	auto_set_filetype = false,
+	auto_set_syntax = true,
 
 	dailies = home .. "/" .. "notes",
 	weeklies = home .. "/" .. "weekly",

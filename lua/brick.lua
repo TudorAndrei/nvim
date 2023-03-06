@@ -1,22 +1,36 @@
 require("mason-tool-installer").setup({
 	ensure_installed = {
-		"stylua",
+		-- shell
 		"shfmt",
 		"shellcheck",
+
+		-- python
 		"black",
-		-- "isort",
-		"vint",
-		"pylama",
+		"isort",
+		-- "pylama",
 		"pyright",
+		"ruff-lsp",
+		"pylint",
+		"mypy",
+
+		-- lua
 		"lua-language-server",
+		"stylua",
 		"selene",
+		-- toml
 		"taplo",
+		-- js/html/css
 		"prettierd",
+
 		"rust-analyzer",
 		"rustfmt",
+
+		-- yaml
 		"yamllint",
 		"yamlfmt",
 		"yaml-language-server",
+		-- vim
+		"vint",
 	},
 	auto_update = true,
 	run_on_start = true,

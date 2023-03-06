@@ -9,6 +9,10 @@ nnoremap <C-h> <C-W><C-H>
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
+" nnoremap <C-h> :TmuxNavigateLeft
+" nnoremap <C-j> :TmuxNagigateDown
+" nnoremap <C-k> :TmuxNagivateUp
+" nnoremap <C-l> :TmuxNavigateRight
 
 tnoremap <Esc> <C-\><C-n>
 
