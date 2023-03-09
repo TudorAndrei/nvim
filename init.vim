@@ -29,7 +29,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'vim-test/vim-test'
 
     Plug 'preservim/vimux'
-    Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+    " Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 
     " Pretty Notifications
     Plug 'rcarriga/nvim-notify'
