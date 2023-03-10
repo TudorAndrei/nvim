@@ -3,6 +3,7 @@ local home = vim.fn.expand("~/cave/littlebrain")
 return {
   {
     "renerocksai/telekasten.nvim",
+    ft = { "md,markdown" },
     opts = {
 
       home = home,

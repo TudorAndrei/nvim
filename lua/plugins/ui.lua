@@ -83,6 +83,12 @@ local location = {
 
 return {
   {
+    "kyazdani42/nvim-tree.lua",
+    keys = {
+      { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Open file tree" },
+    },
+  },
+  {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = {
@@ -122,7 +128,12 @@ return {
   {
     "folke/todo-comments.nvim",
   },
-  { "folke/trouble.nvim" },
+  {
+    "folke/trouble.nvim",
+    keys = {
+      { "<leader>ft", "<cmd>TroubleToggle<cr>", desc = "Toggle trouble" },
+    },
+  },
   {
     "akinsho/bufferline.nvim",
     opts = {
