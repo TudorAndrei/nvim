@@ -28,8 +28,8 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-  -- vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  -- vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+  vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   -- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   -- LSP Saga
   vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
@@ -90,7 +90,7 @@ return {
           capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
           settings = {
             pyright = {
-              disableLanguageServices = false,
+              -- disableLanguageServices = true,
             },
             python = {
               pythonPath = pypath,
@@ -148,9 +148,9 @@ return {
           formatting.black.with({
             extra_args = { "--fast" },
           }),
-          diag.mypy,
+          -- diag.mypy,
           -- diag.pycodestyle,
-          diag.pylint,
+          -- diag.pylint,
           -- diag.pylama.with({
           -- "--from-stdin",
           -- "$FILENAME",
