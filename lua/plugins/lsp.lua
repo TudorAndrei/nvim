@@ -26,15 +26,21 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   local opts = { noremap = true, silent = true, buffer = bufnr }
+  local function map(mode, l, r, opts, desc)
+    opts = opts or {}
+    opts.buffer = bufnr
+    opts.desc = desc
+    vim.keymap.set(mode, l, r, opts)
+  end
 
-  vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  map("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts, "Go to definition")
   -- vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-  vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts, "Go to declaration")
   -- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   -- LSP Saga
-  vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-  vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  vim.keymap.set("i", "<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts, "Open Docs")
+  map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts, "How implementations")
+  map("i", "<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts, "Show signature")
 
   -- Not properly handligh certain symbols
   -- vim.keymap.set("n", "gs", require("lspsaga.signaturehelp").signature_help, { silent = true, noremap = true })
@@ -43,37 +49,37 @@ local on_attach = function(client, bufnr)
   -- vim.keymap.set("n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
   -- vim.keymap.set("n", "<Leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
   -- vim.keymap.set("n", "<Leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-  vim.keymap.set("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opts)
-  vim.keymap.set("n", "<Leader>gf", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  map("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opts, "Generate docstrings")
+  map("n", "<Leader>gf", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts, "Go to type definition")
   -- vim.keymap.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  vim.keymap.set("n", "<Leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-  vim.keymap.set("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  map("n", "<Leader>rn", "<cmd>Lspsaga rename<CR>", opts, "Rename")
+  map("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts, "Code action")
 
-  vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts, "Go to references")
 
   -- vim.keymap.set("n", "<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-  vim.keymap.set("n", "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  map("n", "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts, "Open diagnostics")
   -- vim.keymap.set("n", "<Leader>e", "<cmd>lua require('lsp_lines').toggle()<CR>", opts)
 
   -- vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   -- vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-  vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+  -- map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts, "Go to prev diag")
+  -- map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts, "Go to next diag")
   -- or jump to error
-  vim.keymap.set("n", "[e", function()
+  map("n", "[d", function()
     require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
   end, { silent = true, noremap = true })
-  vim.keymap.set("n", "]e", function()
+  map("n", "]d", function()
     require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
   end, { silent = true, noremap = true })
 
-  vim.keymap.set("n", "<Leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  vim.keymap.set("n", "<Leader>fm", "<cmd>lua vim.lsp.buf.format({async = false})<CR>", opts)
+  map("n", "<Leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts, "Set loc list")
+  map("n", "<Leader>fm", "<cmd>lua vim.lsp.buf.format({async = false})<CR>", opts, "Format file")
 
   -- LSP SAGA
-  vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
-  vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-  vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts)
+  map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts, "Lsp finder")
+  map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts, "Code action")
+  map("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts, "Range code action")
 end
 return {
 
