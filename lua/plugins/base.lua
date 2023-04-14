@@ -97,8 +97,6 @@ return {
 
         -- python
         "black",
-        "isort",
-        -- "pylama",
         "pyright",
         "ruff-lsp",
         -- "pylint",

@@ -148,25 +148,9 @@ return {
         on_attach = on_attach,
         sources = {
           -- python
-          formatting.isort.with({
-            extra_args = { "--profile", " black" },
-          }),
           formatting.black.with({
             extra_args = { "--fast" },
           }),
-          -- diag.mypy,
-          -- diag.pycodestyle,
-          -- diag.pylint,
-          -- diag.pylama.with({
-          -- "--from-stdin",
-          -- "$FILENAME",
-          -- "-f",
-          -- "json",
-          -- "-l",
-          -- "eradicate,pydocstyle,vulture,mypy,vulture,pylint,pyflakes,pycodestyle",
-          -- "-m",
-          -- "88",
-          -- }),
           -- js
           formatting.prettierd,
           formatting.latexindent,
