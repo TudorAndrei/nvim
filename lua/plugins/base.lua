@@ -94,13 +94,11 @@ return {
         -- shell
         "shfmt",
         "shellcheck",
-
         -- python
         "black",
-        "pyright",
         "ruff-lsp",
-        -- "pylint",
-        -- "mypy",
+        -- "pylyzer",
+        "pyright",
 
         -- lua
         "lua-language-server",
