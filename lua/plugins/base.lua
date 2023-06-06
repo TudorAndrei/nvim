@@ -99,6 +99,7 @@ return {
         "ruff-lsp",
         -- "pylyzer",
         "pyright",
+        "mypy",
 
         -- lua
         "lua-language-server",
