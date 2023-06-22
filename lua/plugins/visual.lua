@@ -1,6 +1,7 @@
 return {
   {
     "simrat39/symbols-outline.nvim",
+    opts = {},
   },
   {
     "windwp/nvim-autopairs",
