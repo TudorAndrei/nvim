@@ -2,20 +2,28 @@ local home = vim.fn.expand("~/cave/littlebrain")
 
 return {
   {
+    "toppair/peek.nvim",
+    build = "cd app && npm install",
+    cmd = "MarkdownPreviewToggle",
+    keys = {
+      { "<leader>zp", "<cmd>MarkdownPreviewToggle<CR>", desc = "Toggle markdown preview" },
+    },
+  },
+  {
     "renerocksai/telekasten.nvim",
     ft = { "md,markdown,telekasten" },
     dependencies = { "renerocksai/calendar-vim" },
     keys = {
       -- Launch panel if nothing is typed after <leader>z
-      { "<leader>z", "<cmd>Telekasten panel<CR>" },
-      { "<leader>zf", "<cmd>Telekasten find_notes<CR>" },
-      { "<leader>zg", "<cmd>Telekasten search_notes<CR>" },
-      { "<leader>zd", "<cmd>Telekasten goto_today<CR>" },
-      { "<leader>zz", "<cmd>Telekasten follow_link<CR>" },
-      { "<leader>zn", "<cmd>Telekasten new_note<CR>" },
-      { "<leader>zc", "<cmd>Telekasten show_calendar<CR>" },
-      { "<leader>zb", "<cmd>Telekasten show_backlinks<CR>" },
-      { "<leader>zI", "<cmd>Telekasten insert_img_link<CR>" },
+      { "<leader>z", "<cmd>Telekasten panel<CR>", desc = "Open panel" },
+      { "<leader>zf", "<cmd>Telekasten find_notes<CR>", desc = "Search notes" },
+      { "<leader>zg", "<cmd>Telekasten search_notes<CR>", desc = "Search in notes" },
+      { "<leader>zd", "<cmd>Telekasten goto_today<CR>", desc = "Go to today" },
+      { "<leader>zz", "<cmd>Telekasten follow_link<CR>", desc = "Follow links" },
+      { "<leader>zn", "<cmd>Telekasten new_note<CR>", desc = "New note" },
+      { "<leader>zc", "<cmd>Telekasten show_calendar<CR>", desc = "Show calendar" },
+      { "<leader>zb", "<cmd>Telekasten show_backlinks<CR>", desc = "Show backlinks" },
+      { "<leader>zI", "<cmd>Telekasten insert_img_link<CR>", desc = "Insert image" },
     },
     opts = {
 

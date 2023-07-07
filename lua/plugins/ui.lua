@@ -82,30 +82,31 @@ local location = {
 }
 
 return {
-  {
-    "folke/edgy.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.opt.laststatus = 3
-      vim.opt.splitkeep = "screen"
-    end,
-    opts = {
-      bottom = {},
-      left = {
-        {
-          ft = "nvim-tree",
-          pinned = true,
-          open = "NvimTreeToggle",
-        },
-        {
-          ft = "Outline",
-          pinned = true,
-          open = "SymbolsOutlineOpen",
-          height = { 0.4 },
-        },
-      },
-    },
-  },
+  -- {
+  --   "folke/edgy.nvim",
+  --   enable = false,
+  --   event = "VeryLazy",
+  --   init = function()
+  --     vim.opt.laststatus = 3
+  --     vim.opt.splitkeep = "screen"
+  --   end,
+  --   opts = {
+  --     bottom = {},
+  --     left = {
+  --       {
+  --         ft = "nvim-tree",
+  --         pinned = true,
+  --         open = "NvimTreeToggle",
+  --       },
+  --       {
+  --         ft = "Outline",
+  --         pinned = true,
+  --         open = "SymbolsOutlineOpen",
+  --         height = { 0.4 },
+  --       },
+  --     },
+  --   },
+  -- },
   {
     "kyazdani42/nvim-tree.lua",
     keys = {

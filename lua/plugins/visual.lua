@@ -1,7 +1,12 @@
 return {
   {
     "simrat39/symbols-outline.nvim",
-    opts = {},
+    cmd = "SymbolsOutline",
+    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+    opts = {
+      -- add your options that should be passed to the setup() function here
+      position = "right",
+    },
   },
   {
     "windwp/nvim-autopairs",
@@ -101,7 +106,7 @@ return {
         end, { expr = true })
 
         -- Actions
-        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
+        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "stage hunk" })
         map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
         map("n", "<leader>hS", gs.stage_buffer)
         map("n", "<leader>hu", gs.undo_stage_hunk)

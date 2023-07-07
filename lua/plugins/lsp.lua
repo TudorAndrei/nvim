@@ -86,6 +86,7 @@ return {
   -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
+    capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
     ---@class PluginLspOpts
     opts = {
       ---@type lspconfig.options
@@ -93,7 +94,6 @@ return {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {
           on_attach = on_attach,
-          capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
           settings = {
             pyright = {
               -- disableLanguageServices = true,
@@ -112,10 +112,15 @@ return {
             debounce_text_changes = 150,
           },
         },
-        -- pylyzer = {
-        --   on_attach = on_attach,
-        --   capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        -- },
+        pylyzer = {
+          on_attach = on_attach,
+          python = {
+            checkOnType = false,
+            diagnostics = true,
+            inlayHints = true,
+            smartCompletion = true,
+          },
+        },
       },
     },
   },

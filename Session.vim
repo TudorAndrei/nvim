@@ -13,21 +13,21 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +13 init.lua
-badd +57 lua/plugins/cmp.lua
-badd +68 lua/plugins/visual.lua
+badd +10 init.lua
+badd +113 lua/plugins/ui.lua
+badd +4 lua/plugins/visual.lua
 argglobal
 %argdel
 $argadd init.lua
-edit lua/plugins/visual.lua
+edit lua/plugins/ui.lua
 argglobal
-balt lua/plugins/cmp.lua
-let s:l = 68 - ((66 * winheight(0) + 57) / 114)
+balt lua/plugins/visual.lua
+let s:l = 109 - ((60 * winheight(0) + 37) / 75)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 68
-normal! 08|
+keepjumps 109
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

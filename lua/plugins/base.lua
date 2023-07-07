@@ -24,6 +24,8 @@ return {
         { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find opened buffers" },
         { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find in help" },
         { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Search in keybinds" },
+        { "<leader>fx", "<cmd>Telescope bibtex<cr>", desc = "Search in bibtex" },
+        { "<leader>fs", "<cmd>Telescope symbols<cr>", desc = "Search symbols" },
         { "z=", "<cmd>Telescope spell_suggest<cr>", desc = "Suggest word" },
       }
     end,
@@ -39,10 +41,25 @@ return {
   {
     "telescope.nvim",
     dependencies = {
+      "nvim-telescope/telescope-symbols.nvim",
+    },
+  },
+  {
+    "telescope.nvim",
+    dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
       config = function()
         require("telescope").load_extension("fzf")
+      end,
+    },
+  },
+  {
+    "telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-bibtex.nvim",
+      config = function()
+        require("telescope").load_extension("bibtex")
       end,
     },
   },
@@ -99,7 +116,7 @@ return {
         "ruff-lsp",
         -- "pylyzer",
         "pyright",
-        -- "mypy",
+        "mypy",
 
         -- lua
         "lua-language-server",
