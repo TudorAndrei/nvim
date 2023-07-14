@@ -120,7 +120,7 @@ return {
         --     inlayHints = true,
         --     smartCompletion = true,
         --   },
-        },
+        -- },
       },
     },
   },
