@@ -69,7 +69,6 @@ return {
       ensure_installed = {
         "c",
         "bash",
-        "help",
         "html",
         "javascript",
         "json",
@@ -104,6 +103,7 @@ return {
       },
     },
   },
+  { "DariusCorvus/tree-sitter-surrealdb" },
   {
     "williamboman/mason.nvim",
     opts = {
