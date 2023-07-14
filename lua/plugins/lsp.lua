@@ -112,14 +112,14 @@ return {
             debounce_text_changes = 150,
           },
         },
-        pylyzer = {
-          on_attach = on_attach,
-          python = {
-            checkOnType = false,
-            diagnostics = true,
-            inlayHints = true,
-            smartCompletion = true,
-          },
+        -- pylyzer = {
+        --   on_attach = on_attach,
+        --   python = {
+        --     checkOnType = false,
+        --     diagnostics = true,
+        --     inlayHints = true,
+        --     smartCompletion = true,
+        --   },
         },
       },
     },
