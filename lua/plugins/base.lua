@@ -106,6 +106,7 @@ return {
   { "DariusCorvus/tree-sitter-surrealdb" },
   {
     "williamboman/mason.nvim",
+    build = ":MasonUpdate",
     opts = {
       ensure_installed = {
         -- shell
@@ -116,7 +117,7 @@ return {
         "ruff-lsp",
         -- "pylyzer",
         "pyright",
-        "mypy",
+        -- "mypy",
 
         -- lua
         "lua-language-server",
