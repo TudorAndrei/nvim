@@ -129,7 +129,6 @@ return {
         "prettierd",
 
         "rust-analyzer",
-        "rustfmt",
 
         -- yaml
         "yamllint",
