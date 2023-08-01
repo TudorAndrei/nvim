@@ -9,7 +9,6 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lua",
@@ -17,6 +16,7 @@ return {
       "kdheepak/cmp-latex-symbols",
       "aspeddro/cmp-pandoc.nvim",
       "onsails/lspkind.nvim",
+      "hrsh7th/cmp-buffer",
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
@@ -89,7 +89,7 @@ return {
       opts.views = {
         entries = "native",
       }
-      opts.source = {
+      opts.sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer" },
