@@ -103,7 +103,7 @@ return {
               analysis = {
                 autoSearchPaths = true,
                 diagnosticMode = "workspace",
-                useLibraryCodeForTypes = false,
+                useLibraryCodeForTypes = true,
                 typeCheckingMode = "basic",
               },
             },
