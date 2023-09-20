@@ -96,7 +96,8 @@ return {
           on_attach = on_attach,
           settings = {
             pyright = {
-              -- disableLanguageServices = true,
+              disableLanguageServices = false,
+              disableOrganizeImports = true,
             },
             python = {
               pythonPath = pypath,
@@ -160,8 +161,12 @@ return {
           formatting.black.with({
             extra_args = { "--fast" },
           }),
+          -- html
+          diag.curlylint,
+          -- diag.djlint,
           -- js
-          formatting.prettierd,
+          -- formatting.prettierd,
+          -- formatting.rome,
           formatting.latexindent,
           formatting.markdownlint.with({
             filetypes = { "markdown", "rmd", "telekasten" },
@@ -178,6 +183,9 @@ return {
           formatting.rustfmt,
           formatting.yamlfmt,
           nls.builtins.completion.spell,
+          -- c/c++
+          formatting.clang_format,
+          diag.cpplint,
         },
       }
     end,
