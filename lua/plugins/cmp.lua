@@ -92,7 +92,7 @@ return {
       opts.sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer" },
+        -- { name = "buffer" },
         { name = "cmp_pandoc" },
         -- { name = "nvim_lsp_signature_help" },
         -- { name = "pandoc_references" },
@@ -102,6 +102,7 @@ return {
         { name = "emoji" },
         { name = "path" },
         { name = "omni" },
+        { name = "crates" },
       }
     end,
   },

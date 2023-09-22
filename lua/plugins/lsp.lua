@@ -4,7 +4,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local lsp_formatting = function(bufnr)
   vim.lsp.buf.format({
     filter = function(client)
-      -- apply whatever logic you want (in this example, we'll only use null-ls)
+      -- apply whatever logic you want (in this example, we'll only use none-ls)
       return client.name == "null-ls"
     end,
     bufnr = bufnr,
@@ -112,16 +112,16 @@ return {
           flags = {
             debounce_text_changes = 150,
           },
+          pylyzer = {
+            on_attach = on_attach,
+            python = {
+              checkOnType = false,
+              diagnostics = true,
+              inlayHints = true,
+              smartCompletion = true,
+            },
+          },
         },
-        -- pylyzer = {
-        --   on_attach = on_attach,
-        --   python = {
-        --     checkOnType = false,
-        --     diagnostics = true,
-        --     inlayHints = true,
-        --     smartCompletion = true,
-        --   },
-        -- },
       },
     },
   },
@@ -149,7 +149,7 @@ return {
     },
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = function()
       local nls = require("null-ls")
       local formatting = nls.builtins.formatting
@@ -157,6 +157,8 @@ return {
       return {
         on_attach = on_attach,
         sources = {
+          -- docker
+          diag.hadolint,
           -- python
           formatting.black.with({
             extra_args = { "--fast" },
@@ -165,8 +167,9 @@ return {
           diag.curlylint,
           -- diag.djlint,
           -- js
-          -- formatting.prettierd,
-          -- formatting.rome,
+          formatting.biome.with({
+            filetypes = { "javascript", "html", "json" },
+          }),
           formatting.latexindent,
           formatting.markdownlint.with({
             filetypes = { "markdown", "rmd", "telekasten" },

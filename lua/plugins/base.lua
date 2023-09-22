@@ -71,6 +71,7 @@ return {
         "bash",
         "html",
         "javascript",
+        "dockerfile",
         "json",
         "lua",
         "markdown",
@@ -83,6 +84,7 @@ return {
         "vim",
         "yaml",
         "rust",
+        "toml",
       },
       highlight = {
         enable = true,
@@ -109,6 +111,8 @@ return {
     build = ":MasonUpdate",
     opts = {
       ensure_installed = {
+        -- docker
+        "hadolint",
         -- shell
         "shfmt",
         "shellcheck",
@@ -118,7 +122,6 @@ return {
         -- "pylyzer",
         "pyright",
         -- "mypy",
-
         -- lua
         "lua-language-server",
         "stylua",
@@ -126,10 +129,9 @@ return {
         -- toml
         "taplo",
         -- js/html/css
-        "prettierd",
-
+        "biome",
+        -- rust
         "rust-analyzer",
-
         -- yaml
         "yamllint",
         "yamlfmt",
