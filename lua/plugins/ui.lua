@@ -151,15 +151,6 @@ return {
     "folke/lsp-colors.nvim",
   },
   {
-    "folke/todo-comments.nvim",
-  },
-  {
-    "folke/trouble.nvim",
-    keys = {
-      { "<leader>ft", "<cmd>TroubleToggle<cr>", desc = "Toggle trouble" },
-    },
-  },
-  {
     "akinsho/bufferline.nvim",
     opts = {
       options = {

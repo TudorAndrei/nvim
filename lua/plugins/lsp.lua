@@ -87,11 +87,28 @@ return {
   {
     "neovim/nvim-lspconfig",
     capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    init_options = {
+      userLanguages = {
+        eelixir = "html-eex",
+        eruby = "erb",
+        rust = "html",
+      },
+    },
     ---@class PluginLspOpts
     opts = {
+      -- inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim" },
+              },
+            },
+          },
+        },
         pyright = {
           on_attach = on_attach,
           settings = {
@@ -147,50 +164,5 @@ return {
         -- border = false,
       },
     },
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function()
-      local nls = require("null-ls")
-      local formatting = nls.builtins.formatting
-      local diag = nls.builtins.diagnostics
-      return {
-        on_attach = on_attach,
-        sources = {
-          -- docker
-          diag.hadolint,
-          -- python
-          formatting.black.with({
-            extra_args = { "--fast" },
-          }),
-          -- html
-          diag.curlylint,
-          -- diag.djlint,
-          -- js
-          formatting.biome.with({
-            filetypes = { "javascript", "html", "json" },
-          }),
-          formatting.latexindent,
-          formatting.markdownlint.with({
-            filetypes = { "markdown", "rmd", "telekasten" },
-          }),
-          -- diag.write_good,
-          formatting.stylua,
-          -- vim
-          diag.vint,
-          -- lua
-          diag.selene,
-          -- toml
-          formatting.taplo,
-          -- rust
-          formatting.rustfmt,
-          formatting.yamlfmt,
-          nls.builtins.completion.spell,
-          -- c/c++
-          formatting.clang_format,
-          diag.cpplint,
-        },
-      }
-    end,
   },
 }

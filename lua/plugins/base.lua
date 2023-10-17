@@ -68,22 +68,21 @@ return {
     opts = {
       ensure_installed = {
         "c",
+        "rust",
+        "lua",
+        "typescript",
+        "python",
+        "javascript",
         "bash",
         "html",
-        "javascript",
         "dockerfile",
-        "json",
-        "lua",
         "markdown",
         "markdown_inline",
-        "python",
         "query",
         "regex",
-        "tsx",
-        "typescript",
         "vim",
         "yaml",
-        "rust",
+        "json",
         "toml",
       },
       highlight = {
@@ -105,7 +104,14 @@ return {
       },
     },
   },
-  { "DariusCorvus/tree-sitter-surrealdb" },
+  {
+    "dariuscorvus/tree-sitter-surrealdb.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      -- setup step
+      require("tree-sitter-surrealdb").setup()
+    end,
+  },
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
@@ -141,7 +147,6 @@ return {
       },
     },
   },
-  { "tpope/vim-obsession" },
   -- {
   --   "alexghergh/nvim-tmux-navigation",
   --   opts = {
@@ -166,4 +171,15 @@ return {
   --   },
   -- },
   { "nathom/tmux.nvim" },
+  -- {
+  --   "aserowy/tmux.nvim",
+  --   config = function()
+  --     return require("tmux").setup()
+  --   end,
+  --   opts = {
+  --     navigation = {
+  --       cycle_navigation = false,
+  --     },
+  --   },
+  -- },
 }
