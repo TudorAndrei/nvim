@@ -165,4 +165,49 @@ return {
       },
     },
   },
+  {
+    "nvimtools/none-ls.nvim",
+    opts = function()
+      local nls = require("null-ls")
+      local formatting = nls.builtins.formatting
+      local diag = nls.builtins.diagnostics
+      return {
+        on_attach = on_attach,
+        sources = {
+          -- docker
+          diag.hadolint,
+          -- python
+          formatting.black.with({
+            extra_args = { "--fast" },
+          }),
+          -- html
+          diag.curlylint,
+          -- diag.djlint,
+          -- js
+          formatting.biome.with({
+            filetypes = { "javascript", "html", "json" },
+          }),
+          formatting.latexindent,
+          formatting.markdownlint.with({
+            filetypes = { "markdown", "rmd", "telekasten" },
+          }),
+          -- diag.write_good,
+          formatting.stylua,
+          -- vim
+          diag.vint,
+          -- lua
+          diag.selene,
+          -- toml
+          formatting.taplo,
+          -- rust
+          formatting.rustfmt,
+          formatting.yamlfmt,
+          nls.builtins.completion.spell,
+          -- c/c++
+          formatting.clang_format,
+          diag.cpplint,
+        },
+      }
+    end,
+  },
 }
