@@ -108,41 +108,37 @@ return {
   --   },
   -- },
   {
-    "kyazdani42/nvim-tree.lua",
-    keys = {
-      { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Open file tree" },
-    },
-  },
-  {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    opts = {
-      options = {
-        theme = "dracula",
-        icons_enabled = true,
-        component_separators = { "", "" },
-        section_separators = { "", "" },
-        disabled_filetypes = { "dashboard", "NvimTree", "Outline", "TelescopePrompt" },
-
-        globalstatus = true,
-      },
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = { branch },
-        lualine_c = { "filename", diagnostics },
-        lualine_x = { diff, "encoding", { getWords } },
-        lualine_y = { filetype, conda_env, venv_env },
-        lualine_z = { location },
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { location },
-        lualine_y = {},
-        lualine_z = {},
-      },
-    },
+    opts = function()
+      return {
+        options = {
+          theme = "dracula",
+          icons_enabled = true,
+          component_separators = {},
+          section_separators = {},
+          disabled_filetypes = { "dashboard", "TelescopePrompt" },
+          globalstatus = true,
+        },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { branch },
+          lualine_c = { "filename", diagnostics },
+          lualine_x = { diff, "encoding", { getWords } },
+          lualine_y = { filetype, conda_env, venv_env },
+          lualine_z = { location },
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = { "filename" },
+          lualine_x = { location },
+          lualine_y = {},
+          lualine_z = {},
+        },
+        extensions = { "trouble", "fzf", "mason", "nvim-tree", "lazy", "symbols-outline" },
+      }
+    end,
   },
   {
     "j-hui/fidget.nvim",
@@ -165,6 +161,9 @@ return {
   },
   {
     "kyazdani42/nvim-tree.lua",
+    keys = {
+      { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Open file tree" },
+    },
     opts = {
       disable_netrw = true,
       hijack_netrw = true,
@@ -185,7 +184,7 @@ return {
           ".*.run.xml$",
           ".*.synctex.gz$",
         },
-        exclude = { "data", ".env" },
+        exclude = { "data", ".env", ".db_conf" },
       },
       view = {
         width = 30,
@@ -201,6 +200,13 @@ return {
           },
         },
       },
+    },
+  },
+
+  {
+    "windwp/nvim-autopairs",
+    opts = {
+      enable_check_bracket_line = false,
     },
   },
 }

@@ -64,24 +64,24 @@ return {
         end, { "i", "s" }),
       })
 
-      local lspkind = require("lspkind")
-      lspkind.init()
-      opts.formatting = {
-        format = lspkind.cmp_format({
-          mode = "symbol", -- show only symbol annotations
-          maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-          ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-        }),
-      }
+      -- local lspkind = require("lspkind")
+      -- lspkind.init()
       -- opts.formatting = {
-      --   format = function(_, item)
-      --     local icons = require("lazyvim.config").icons.kinds
-      --     if icons[item.kind] then
-      --       item.kind = icons[item.kind] .. item.kind
-      --     end
-      --     return item
-      --   end,
+      --   format = lspkind.cmp_format({
+      --     mode = "symbol", -- show only symbol annotations
+      --     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      --     ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+      --   }),
       -- }
+      opts.formatting = {
+        format = function(_, item)
+          local icons = require("lazyvim.config").icons.kinds
+          if icons[item.kind] then
+            item.kind = icons[item.kind] .. item.kind
+          end
+          return item
+        end,
+      }
       opts.window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),

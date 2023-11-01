@@ -123,11 +123,9 @@ return {
         "shfmt",
         "shellcheck",
         -- python
-        "black",
         "ruff-lsp",
         -- "pylyzer",
         "pyright",
-        -- "mypy",
         -- lua
         "lua-language-server",
         "stylua",

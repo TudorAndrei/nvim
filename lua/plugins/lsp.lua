@@ -99,7 +99,6 @@ return {
       -- inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
-        -- pyright will be automatically installed with mason and loaded with lspconfig
         lua_ls = {
           settings = {
             Lua = {
@@ -109,6 +108,7 @@ return {
             },
           },
         },
+        -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {
           on_attach = on_attach,
           settings = {
@@ -177,9 +177,6 @@ return {
           -- docker
           diag.hadolint,
           -- python
-          formatting.black.with({
-            extra_args = { "--fast" },
-          }),
           -- html
           diag.curlylint,
           -- diag.djlint,
