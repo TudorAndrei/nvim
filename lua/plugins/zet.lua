@@ -44,7 +44,7 @@ return {
       -- image subdir for pasting
       -- subdir name
       -- or nil if pasted images shouldn't go into a special subdir
-      image_subdir = "img",
+      image_subdir = "attachments",
 
       -- markdown file extension
       extension = ".md",
@@ -67,7 +67,7 @@ return {
       template_new_weekly = home .. "/" .. "templates/weekly.md",
 
       -- image link style
-      image_link_style = "markdown",
+      image_link_style = "wiki",
 
       -- integrate with calendar-vim
       plug_into_calendar = true,
@@ -128,6 +128,7 @@ return {
       --                        present or else in home
       --                        except for notes/with/subdirs/in/title.
       new_note_location = "smart",
+      rename_update_links = true,
     },
   },
 }
