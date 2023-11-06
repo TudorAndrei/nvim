@@ -1,9 +1,4 @@
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
   { "Mofiqul/dracula.nvim" },
   {
     "LazyVim/LazyVim",
@@ -122,12 +117,7 @@ return {
         -- shell
         "shfmt",
         "shellcheck",
-        -- python
-        "ruff-lsp",
-        -- "pylyzer",
-        "pyright",
         -- lua
-        "lua-language-server",
         "stylua",
         "selene",
         -- toml
@@ -145,39 +135,5 @@ return {
       },
     },
   },
-  -- {
-  --   "alexghergh/nvim-tmux-navigation",
-  --   opts = {
-  --     disable_when_zoomed = true, -- defaults to false
-  --     -- keybindings = {
-  --     --   left = "<C-h>",
-  --     --   down = "<C-j>",
-  --     --   up = "<C-k>",
-  --     --   right = "<C-l>",
-  --     --   last_active = "<C-\\>",
-  --     --   next = "<C-Space>",
-  --     -- },
-  --     keys = function()
-  --       return {
-  --         { "<c-h>", "<cmd>NvimTmuxNavigateLeft<cr>", desc = "Tmux nav left" },
-  --         { "<c-j>", "<cmd>NvimTmuxNavigateDown<cr>", desc = "Tmux nav down" },
-  --         { "<c-k>", "<cmd>NvimTmuxNavigateUp<cr>", desc = "Tmux nav up" },
-  --         { "<c-l>", "<cmd>NvimTmuxNavigateRight<cr>", desc = "Tmux nav right" },
-  --         { "<c-\\>", "<cmd>NvimTmuxNavigateLastActive<cr>", desc = "Tmux nav last active" },
-  --       }
-  --     end,
-  --   },
-  -- },
   { "nathom/tmux.nvim" },
-  -- {
-  --   "aserowy/tmux.nvim",
-  --   config = function()
-  --     return require("tmux").setup()
-  --   end,
-  --   opts = {
-  --     navigation = {
-  --       cycle_navigation = false,
-  --     },
-  --   },
-  -- },
 }
