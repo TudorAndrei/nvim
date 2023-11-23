@@ -35,7 +35,6 @@ return {
         yamlls = {},
         biome = {},
         ruff_lsp = {},
-        -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {
           settings = {
             pyright = {
@@ -62,7 +61,7 @@ return {
     opts = {
       formatters_by_ft = {
         javascript = { { "prettierd", "prettier" } },
-        python = { "ruff" },
+        python = { "ruff-lsp" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
       },
