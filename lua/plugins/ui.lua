@@ -43,6 +43,14 @@ local diagnostics = {
   always_visible = false,
 }
 
+local function ollama_status()
+  local status = require("ollama").status()
+  if status == "IDLE" then
+    return "󱙺" -- nf-md-robot-outline
+  elseif status == "WORKING" then
+    return "󰚩" -- nf-md-robot
+  end
+end
 local function getWords()
   if vim.bo.filetype == "md" or vim.bo.filetype == "txt" or vim.bo.filetype == "rmd" then
     if vim.fn.wordcount().visual_words == 1 then
@@ -124,7 +132,7 @@ return {
           lualine_a = { "mode" },
           lualine_b = { branch },
           lualine_c = { "filename", diagnostics },
-          lualine_x = { diff, "encoding", { getWords } },
+          lualine_x = { { ollama_status }, diff, "encoding", { getWords } },
           lualine_y = { filetype, conda_env, venv_env },
           lualine_z = { location },
         },

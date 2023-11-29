@@ -19,6 +19,6 @@ return {
 
   ---@type Ollama.Config
   opts = {
-    -- your configuration overrides
+    model = "codellama:34b-instruct",
   },
 }

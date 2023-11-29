@@ -14,7 +14,6 @@ return {
     keys = function()
       return {
         { "<leader>fl", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-        { "<leader>fr", "<cmd>Telescope file_browser<cr>", desc = "Find Files" },
         { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep in files" },
         { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find opened buffers" },
         { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find in help" },
