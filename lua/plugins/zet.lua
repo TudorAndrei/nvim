@@ -37,7 +37,7 @@ return {
       auto_set_filetype = true,
       auto_set_syntax = true,
 
-      dailies = home .. "/" .. "notes",
+      dailies = home .. "/" .. "daily",
       weeklies = home .. "/" .. "weekly",
       templates = home .. "/" .. "templates",
 
