@@ -19,6 +19,25 @@ return {
 
   ---@type Ollama.Config
   opts = {
-    model = "codellama:34b-instruct",
+    model = "openhermes2.5-mistral:latest",
+    prompts = {
+      Sample_Prompt = {
+        prompt = "Optimize this code $buf",
+        input_label = "> ",
+        model = "openhermes2.5-mistral:latest",
+        action = "display",
+      },
+    },
+  },
+  {
+    "dustinblackman/oatmeal.nvim",
+    cmd = { "Oatmeal" },
+    keys = {
+      { "<leader>om", mode = "n", desc = "Start Oatmeal session" },
+    },
+    opts = {
+      backend = "ollama",
+      model = "openhermes2.5-mistral:latest",
+    },
   },
 }
