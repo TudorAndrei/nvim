@@ -1,7 +1,6 @@
 local pypath = vim.g.current_python_path
 
 return {
-  -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
     opts = {
