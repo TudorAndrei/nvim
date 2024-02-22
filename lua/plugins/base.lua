@@ -61,6 +61,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
+        "hjson",
         "c",
         "rust",
         "lua",
