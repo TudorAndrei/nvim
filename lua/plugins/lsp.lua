@@ -59,8 +59,8 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        javascript = { "prettier" },
-        html = { "prettier" },
+        javascript = { "prettierd" },
+        html = { "prettierd" },
         python = { "ruff-lsp" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
