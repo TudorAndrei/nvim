@@ -62,6 +62,7 @@ return {
     opts = {
       ensure_installed = {
         "hjson",
+        "gleam",
         "c",
         "rust",
         "lua",
@@ -124,6 +125,8 @@ return {
         "taplo",
         -- js/html/css
         "biome",
+        -- gleam
+        "gleam",
         -- rust
         "rust-analyzer",
         -- yaml
