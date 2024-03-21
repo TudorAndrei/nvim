@@ -125,8 +125,6 @@ return {
         "taplo",
         -- js/html/css
         "biome",
-        -- gleam
-        "gleam",
         -- rust
         "rust-analyzer",
         -- yaml
