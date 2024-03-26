@@ -34,7 +34,7 @@ return {
         yamlls = {},
         biome = {},
         ruff_lsp = {},
-        pyright = {
+        basedpyright = {
           settings = {
             pyright = {
               disableOrganizeImports = true,
