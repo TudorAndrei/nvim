@@ -6,9 +6,6 @@ return {
       colorscheme = "dracula",
     },
   },
-  -- {
-  --   "ggandor/leap.nvim",
-  -- },
   {
     "nvim-telescope/telescope.nvim",
     keys = function()

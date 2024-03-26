@@ -4,6 +4,16 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      setup = {
+        ruff_lsp = function()
+          LazyVim.lsp.on_attach(function(client, _)
+            if client.name == "ruff_lsp" then
+              -- Disable hover in favor of Pyright
+              client.server_capabilities.hoverProvider = false
+            end
+          end)
+        end,
+      },
       inlay_hints = { enabled = true },
       capabilities = {
         workspace = {
@@ -22,7 +32,6 @@ return {
             },
           },
         },
-
         clangd = {},
         docker_compose_language_service = {},
         dockerls = {},
@@ -33,10 +42,26 @@ return {
         tsserver = {},
         yamlls = {},
         biome = {},
-        ruff_lsp = {},
+        ruff_lsp = {
+          keys = {
+            {
+              "<leader>co",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.organizeImports" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Organize Imports",
+            },
+          },
+        },
         basedpyright = {
           settings = {
-            pyright = {
+            basedpyright = {
               disableOrganizeImports = true,
             },
             python = {
@@ -108,6 +133,25 @@ return {
       ui = {
         title = false,
         -- border = false,
+      },
+    },
+  },
+  {
+    "nvim-neotest/neotest-python",
+  },
+  {
+    "nvim-neotest/neotest",
+    optional = true,
+    dependencies = {
+      "nvim-neotest/neotest-python",
+    },
+    opts = {
+      adapters = {
+        ["neotest-python"] = {
+          -- Here you can specify the settings for the adapter, i.e.
+          runner = "pytest",
+          python = ".venv/bin/python",
+        },
       },
     },
   },
