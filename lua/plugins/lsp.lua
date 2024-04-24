@@ -85,7 +85,7 @@ return {
     opts = {
       formatters_by_ft = {
         javascript = { "prettierd" },
-        html = { "prettierd" },
+        html = { "djlint" },
         python = { "ruff-lsp" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },

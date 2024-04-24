@@ -172,6 +172,7 @@ return {
     keys = {
       { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Open file tree" },
     },
+    lazy = false,
     opts = {
       disable_netrw = true,
       hijack_netrw = true,
