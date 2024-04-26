@@ -68,7 +68,6 @@ return {
         "javascript",
         "bash",
         "html",
-        "dockerfile",
         "markdown",
         "markdown_inline",
         "query",
