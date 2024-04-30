@@ -109,6 +109,8 @@ return {
     build = ":MasonUpdate",
     opts = {
       ensure_installed = {
+        -- python
+        "basedpyright",
         -- docker
         "hadolint",
         -- shell
@@ -123,6 +125,8 @@ return {
         "biome",
         -- rust
         "rust-analyzer",
+        -- tailwind
+        "tailwindcss-language-server",
         -- yaml
         "yamllint",
         "yamlfmt",
