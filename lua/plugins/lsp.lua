@@ -32,6 +32,7 @@ return {
             },
           },
         },
+        jinja_lsp = {},
         clangd = {},
         docker_compose_language_service = {},
         dockerls = {},
@@ -85,7 +86,7 @@ return {
     opts = {
       formatters_by_ft = {
         javascript = { "prettierd" },
-        html = { "djlint" },
+        html = { "prettierd" },
         python = { "ruff-lsp" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
