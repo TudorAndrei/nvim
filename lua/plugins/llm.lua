@@ -37,7 +37,7 @@ return {
     },
     opts = {
       backend = "ollama",
-      model = "openhermes2.5-mistral:latest",
+      model = "llama3:8b",
     },
   },
 }
