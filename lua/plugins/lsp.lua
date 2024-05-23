@@ -85,8 +85,8 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        javascript = { "prettierd" },
-        html = { "djlint" },
+        javascript = { "prettier" },
+        html = { "prettier" },
         python = { "ruff-lsp" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
@@ -101,6 +101,7 @@ return {
         markdown = { "markdownlint" },
         yaml = { "yamllint" },
         dockerfile = { "hadolint" },
+        jinja = { "jinja_lsp" },
       },
       linters = {
         selene = {
