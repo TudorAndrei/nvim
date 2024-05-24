@@ -170,9 +170,9 @@ return {
   {
     "kyazdani42/nvim-tree.lua",
     keys = {
-      { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Open file tree" },
+      { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Open file tree", mode = { "n", "v" } },
     },
-    lazy = false,
+    lazy = true,
     opts = {
       disable_netrw = true,
       hijack_netrw = true,

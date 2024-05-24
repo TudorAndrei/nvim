@@ -1,6 +1,7 @@
 local pypath = vim.g.current_python_path
 
 return {
+  { "lepture/vim-jinja" },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -85,9 +86,10 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        javascript = { "prettier" },
-        html = { "prettier" },
-        css = { "prettier" },
+        javascript = { "prettierd" },
+        html = { "djlint", "rustywind" },
+        jinja = { "djlint", "rustywind" },
+        css = { "prettierd" },
         python = { "ruff-lsp" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
@@ -103,7 +105,6 @@ return {
         markdown = { "markdownlint" },
         yaml = { "yamllint" },
         dockerfile = { "hadolint" },
-        jinja = { "jinja_lsp" },
       },
       linters = {
         selene = {
@@ -117,7 +118,7 @@ return {
   {
     "danymat/neogen",
     keys = {
-      { "<leader>nf", "<cmd>:lua require('neogen').generate()<CR>", desc = "Open file tree" },
+      { "<leader>nf", "<cmd>:lua require('neogen').generate()<CR>", desc = "Generate docstrings" },
     },
     opts = {
       enabled = true,
