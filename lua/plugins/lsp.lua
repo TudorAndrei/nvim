@@ -87,6 +87,7 @@ return {
       formatters_by_ft = {
         javascript = { "prettier" },
         html = { "prettier" },
+        css = { "prettier" },
         python = { "ruff-lsp" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
@@ -98,6 +99,7 @@ return {
     opts = {
       linters_by_ft = {
         lua = { "selene" },
+        css = { "stylelint" },
         markdown = { "markdownlint" },
         yaml = { "yamllint" },
         dockerfile = { "hadolint" },
