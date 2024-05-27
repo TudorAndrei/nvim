@@ -137,7 +137,7 @@ return {
     opts = {
       ui = {
         title = false,
-        -- border = false,
+        border = false,
       },
     },
   },
