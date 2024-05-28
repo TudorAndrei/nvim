@@ -1,3 +1,3 @@
 return {
-  -- { "gleam-lang/gleam.vim" },
+  { "gleam-lang/gleam.vim" },
 }
