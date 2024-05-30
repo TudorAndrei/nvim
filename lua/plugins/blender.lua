@@ -1,5 +1,8 @@
 return {
   "b0o/blender.nvim",
+  config = function()
+    require("blender").setup()
+  end,
   dependencies = {
     "MunifTanjim/nui.nvim",
     "grapp-dev/nui-components.nvim",
