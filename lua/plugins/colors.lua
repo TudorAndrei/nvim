@@ -4,5 +4,5 @@ return {
   opts = {
     enabled_named_colors = true,
   },
-  ft = { "css" },
+  ft = { "css", "html", "jinja" },
 }
