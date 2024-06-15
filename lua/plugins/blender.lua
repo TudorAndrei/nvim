@@ -1,5 +1,13 @@
 return {
   "b0o/blender.nvim",
+  keys = {
+    { "<leader>Po", "<cmd>Blender<cr>", desc = "Open Blender UI" },
+    { "<leader>Pl", "<cmd>BlenderLaunch<cr>", desc = "Launch a Blender Profile" },
+    { "<leader>Pm", "<cmd>BlenderManage<cr>", desc = "Manage a running  Blender task" },
+    { "<leader>Pr", "<cmd>BlenderReload<cr>", desc = "Reload a blender add-on" },
+    { "<leader>Pw", "<cmd>BlenderWatch<cr>", desc = "Watch for changes and reload the add-on" },
+    { "<leader>Pu", "<cmd>BlenderUnwatch<cr>", desc = "Stop watching for changes" },
+  },
   config = function()
     require("blender").setup({
       profiles = { --                 Profile[]?       list of blender profiles
