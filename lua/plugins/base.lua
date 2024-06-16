@@ -114,25 +114,25 @@ return {
         -- docker
         "hadolint",
         -- shell
-        "shfmt",
-        "shellcheck",
+        -- "shfmt",
+        -- "shellcheck",
         -- lua
         "stylua",
         "selene",
         -- toml
         "taplo",
         -- js/html/css
-        "biome",
+        -- "biome",
         -- rust
         "rust-analyzer",
         -- tailwind
         "tailwindcss-language-server",
         -- yaml
-        "yamllint",
-        "yamlfmt",
-        "yaml-language-server",
+        -- "yamllint",
+        -- "yamlfmt",
+        -- "yaml-language-server",
         -- vim
-        "vint",
+        -- "vint",
       },
     },
   },
