@@ -9,6 +9,35 @@ local function mysplit(inputstr, sep)
   return t
 end
 
+local copilot = function()
+  local icon = LazyVim.config.icons.kinds.Copilot
+  local status = require("copilot.api").status.data
+  return icon .. (status.message or "")
+end
+
+local cond_copilot = function()
+  if not package.loaded["copilot"] then
+    return
+  end
+  local ok, clients = pcall(LazyVim.lsp.get_clients, { name = "copilot", bufnr = 0 })
+  if not ok then
+    return false
+  end
+  return ok and #clients > 0
+end
+local color_copilot = function()
+  local colors = {
+    [""] = LazyVim.ui.fg("Special"),
+    ["Normal"] = LazyVim.ui.fg("Special"),
+    ["Warning"] = LazyVim.ui.fg("DiagnosticError"),
+    ["InProgress"] = LazyVim.ui.fg("DiagnosticWarn"),
+  }
+  if not package.loaded["copilot"] then
+    return
+  end
+  local status = require("copilot.api").status.data
+  return colors[status.status] or colors[""]
+end
 local hide_in_width = function()
   return vim.fn.winwidth(0) > 80
 end
@@ -118,7 +147,8 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    opts = function()
+    opts = function(_, opts)
+      table.insert(opts.sections.lualine_x, 2, {})
       return {
         options = {
           theme = "dracula",
@@ -132,7 +162,7 @@ return {
           lualine_a = { "mode" },
           lualine_b = { branch },
           lualine_c = { "filename", diagnostics },
-          lualine_x = { { ollama_status }, diff, "encoding", { getWords } },
+          lualine_x = { { copilot, cond_copilot, color_copilot }, { ollama_status }, diff, "encoding", { getWords } },
           lualine_y = { filetype, conda_env, venv_env },
           lualine_z = { location },
         },

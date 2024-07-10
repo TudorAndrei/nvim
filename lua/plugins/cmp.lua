@@ -17,6 +17,10 @@ return {
       -- "aspeddro/cmp-pandoc.nvim",
       "onsails/lspkind.nvim",
       "hrsh7th/cmp-buffer",
+      {
+        "zbirenbaum/copilot-cmp",
+        opts = {},
+      },
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
@@ -45,6 +49,8 @@ return {
             cmp.select_next_item()
           -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
           -- they way you will only jump inside the snippet region
+          elseif require("copilot.suggestion").is_visible() then
+            require("copilot.suggestion").accept()
           elseif luasnip.expand_or_locally_jumpable() then
             luasnip.expand_or_jump()
           -- elseif has_words_before() then
@@ -90,6 +96,7 @@ return {
         entries = "native",
       }
       opts.sources = {
+        { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         -- { name = "buffer" },
