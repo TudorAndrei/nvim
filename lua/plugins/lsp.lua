@@ -39,7 +39,9 @@ return {
         dockerls = {},
         jsonls = {},
         rust_analyzer = {},
-        tailwindcss = {},
+        tailwindcss = {
+          filetypes_include = { "jinja" },
+        },
         taplo = {},
         tsserver = {},
         yamlls = {},
