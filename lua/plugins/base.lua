@@ -113,26 +113,25 @@ return {
         "basedpyright",
         -- docker
         "hadolint",
-        -- shell
-        -- "shfmt",
-        -- "shellcheck",
+        "json-lsp",
+        "lua-language-server",
+        "docker-compose-language-service",
+        "dockerfile-language-server",
+        "djlint",
+        "biome",
+        "rustywind",
+        "tailwindcss-language-server",
+        "jinja-lsp",
+        "marksman",
         -- lua
         "stylua",
         "selene",
         -- toml
         "taplo",
-        -- js/html/css
-        -- "biome",
         -- rust
         "rust-analyzer",
         -- tailwind
         "tailwindcss-language-server",
-        -- yaml
-        -- "yamllint",
-        -- "yamlfmt",
-        -- "yaml-language-server",
-        -- vim
-        -- "vint",
       },
     },
   },
