@@ -17,10 +17,10 @@ return {
       -- "aspeddro/cmp-pandoc.nvim",
       "onsails/lspkind.nvim",
       "hrsh7th/cmp-buffer",
-      {
-        "zbirenbaum/copilot-cmp",
-        opts = {},
-      },
+      -- {
+      --   "zbirenbaum/copilot-cmp",
+      --   opts = {},
+      -- },
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
