@@ -110,7 +110,8 @@ return {
     opts = {
       ensure_installed = {
         -- python
-        "basedpyright",
+        -- "basedpyright",
+        "pyright",
         -- docker
         "hadolint",
         "json-lsp",

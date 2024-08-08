@@ -46,7 +46,8 @@ return {
         tsserver = {},
         yamlls = {},
         biome = {},
-        ruff_lsp = {
+        -- ruff_lsp = {
+        ruff = {
           keys = {
             {
               "<leader>co",
@@ -92,7 +93,7 @@ return {
         html = { "djlint", "rustywind" },
         jinja = { "djlint", "rustywind" },
         css = { "prettierd" },
-        python = { "ruff-lsp" },
+        python = { "ruff" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
       },
