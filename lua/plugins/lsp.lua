@@ -46,8 +46,8 @@ return {
         tsserver = {},
         yamlls = {},
         biome = {},
-        -- ruff_lsp = {
-        ruff = {
+        ruff_lsp = {
+          -- ruff = {
           keys = {
             {
               "<leader>co",
@@ -68,6 +68,7 @@ return {
           settings = {
             basedpyright = {
               disableOrganizeImports = true,
+              typeCheckingMode = "basic",
             },
             python = {
               pythonPath = pypath,
@@ -93,7 +94,7 @@ return {
         html = { "djlint", "rustywind" },
         jinja = { "djlint", "rustywind" },
         css = { "prettierd" },
-        python = { "ruff" },
+        python = { "ruff_lsp" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
       },
