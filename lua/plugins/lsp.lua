@@ -15,7 +15,7 @@ return {
           end)
         end,
       },
-      inlay_hints = { enabled = true },
+      inlay_hints = { enabled = false },
       capabilities = {
         workspace = {
           didChangeWatchedFiles = {
@@ -68,7 +68,7 @@ return {
           settings = {
             basedpyright = {
               disableOrganizeImports = true,
-              typeCheckingMode = "basic",
+              typeCheckingMode = "standard",
             },
             python = {
               pythonPath = pypath,
