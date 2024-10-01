@@ -90,7 +90,7 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        javascript = { "prettierd" },
+        javascript = { "biome" },
         html = { "djlint", "rustywind" },
         jinja = { "djlint", "rustywind" },
         css = { "prettierd" },
