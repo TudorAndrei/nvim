@@ -142,7 +142,18 @@ return {
           lualine_a = { "mode" },
           lualine_b = { branch },
           lualine_c = { "filename", diagnostics },
-          lualine_x = { { copilot, cond_copilot, color_copilot }, { ollama_status }, diff, "encoding", { getWords } },
+          lualine_x = {
+            { copilot, cond_copilot, color_copilot },
+            { ollama_status },
+            {
+              function()
+                return require("direnv").status_line()
+              end,
+            },
+            diff,
+            "encoding",
+            { getWords },
+          },
           lualine_y = { filetype, conda_env, venv_env },
           lualine_z = { location },
         },
@@ -154,12 +165,9 @@ return {
           lualine_y = {},
           lualine_z = {},
         },
-        extensions = { "trouble", "fzf", "mason", "nvim-tree", "lazy", "symbols-outline" },
+        extensions = { "trouble", "mason", "nvim-tree", "lazy", "symbols-outline" },
       }
     end,
-  },
-  {
-    "j-hui/fidget.nvim",
   },
   {
     "folke/lsp-colors.nvim",
@@ -184,19 +192,20 @@ return {
     },
   },
   {
-    "NvChad/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({ "*" })
-    end,
+    "catgoose/nvim-colorizer.lua",
+    event = "LazyFile",
+    ft = { "html" },
+    opts = {
+      html = {
+        mode = "foreground",
+      },
+    },
   },
   {
     "folke/snacks.nvim",
     opts = {
       dashboard = { enabled = false },
-      scratch = { enabled = false },
-      terminal = { enabled = false },
       scroll = { enabled = false },
-      indent = { enabled = true },
     },
   },
 }
