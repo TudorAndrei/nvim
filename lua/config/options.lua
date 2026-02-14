@@ -9,7 +9,7 @@ opt.softtabstop = 4
 opt.swapfile = false
 
 vim.schedule(function()
-  opt.clipboard = ""
+  opt.clipboard = "unnamedplus"
 end)
 
 vim.filetype.add({
