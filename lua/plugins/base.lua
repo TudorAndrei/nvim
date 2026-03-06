@@ -17,6 +17,14 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
+        "css",
+        "latex",
+        "norg",
+        "scess",
+        "svelte",
+        "typst",
+        "markdown",
+        "tsx",
         "hjson",
         "gleam",
         "c",

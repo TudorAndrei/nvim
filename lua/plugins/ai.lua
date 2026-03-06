@@ -1,4 +1,30 @@
 return {
+  -- {
+  --   "sudo-tee/opencode.nvim",
+  --   config = function()
+  --     require("opencode").setup({
+  --       keymap = {
+  --         input_window = {
+  --           ["<cr>"] = false, -- Disable Enter key for submitting prompts
+  --           -- Other keymaps not specified will keep their default bindings
+  --         },
+  --       },
+  --     })
+  --   end,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     {
+  --       "MeanderingProgrammer/render-markdown.nvim",
+  --       opts = {
+  --         anti_conceal = { enabled = false },
+  --         file_types = { "markdown", "opencode_output" },
+  --       },
+  --       ft = { "markdown", "Avante", "copilot-chat", "opencode_output" },
+  --     },
+  --     "saghen/blink.cmp",
+  --     "folke/snacks.nvim",
+  --   },
+  -- },
   {
     "NickvanDyke/opencode.nvim",
     dependencies = {
