@@ -19,8 +19,6 @@ return {
       ensure_installed = {
         "css",
         "latex",
-        "norg",
-        "scess",
         "svelte",
         "typst",
         "markdown",
