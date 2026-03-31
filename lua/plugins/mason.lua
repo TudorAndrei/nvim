@@ -12,6 +12,8 @@ return {
         "hadolint",
         "selene",
         "stylua",
+        "oxlint",
+        "oxfmt",
       },
     },
   },

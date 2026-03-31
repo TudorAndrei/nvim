@@ -65,7 +65,7 @@ return {
         taplo = {},
         tsserver = {},
         yamlls = {},
-        biome = {},
+        oxlint = {},
         ruff = {
           capabilities = {
             hoverProvider = false,
@@ -112,7 +112,10 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        javascript = { "biome" },
+        javascript = { "oxfmt" },
+        javascriptreact = { "oxfmt" },
+        typescript = { "oxfmt" },
+        typescriptreact = { "oxfmt" },
         html = { "djlint", "rustywind" },
         jinja = { "djlint", "rustywind" },
         css = { "prettierd" },

@@ -20,6 +20,7 @@ return {
         "css",
         "latex",
         "svelte",
+        "just",
         "typst",
         "markdown",
         "tsx",
