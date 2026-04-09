@@ -9,49 +9,6 @@ local function mysplit(inputstr, sep)
   return t
 end
 
-local copilot = function()
-  local icon = LazyVim.config.icons.kinds.Copilot
-  local status = require("copilot.api").status.data
-  return icon .. (status.message or "")
-end
-
-local cond_copilot = function()
-  if not package.loaded["copilot"] then
-    return
-  end
-  local ok, clients = pcall(LazyVim.lsp.get_clients, { name = "copilot", bufnr = 0 })
-  if not ok then
-    return false
-  end
-  return ok and #clients > 0
-end
-local color_copilot = function()
-  local colors = {
-    [""] = LazyVim.ui.fg("Special"),
-    ["Normal"] = LazyVim.ui.fg("Special"),
-    ["Warning"] = LazyVim.ui.fg("DiagnosticError"),
-    ["InProgress"] = LazyVim.ui.fg("DiagnosticWarn"),
-  }
-  if not package.loaded["copilot"] then
-    return
-  end
-  local status = require("copilot.api").status.data
-  return colors[status.status] or colors[""]
-end
-local hide_in_width = function()
-  return vim.fn.winwidth(0) > 80
-end
-
-local function conda_env()
-  local conda_pref = os.getenv("CONDA_PREFIX")
-  if string.find(conda_pref, "envs") then
-    local env = mysplit(conda_pref, "/")
-    return (string.format("🐍%s", env[#env]))
-  else
-    return ""
-  end
-end
-
 local function venv_env()
   local venv_prompt = os.getenv("VIRTUAL_ENV_PROMPT")
   if venv_prompt then
@@ -77,14 +34,6 @@ local diagnostics = {
   always_visible = false,
 }
 
-local function ollama_status()
-  local status = require("ollama").status()
-  if status == "IDLE" then
-    return "󱙺" -- nf-md-robot-outline
-  elseif status == "WORKING" then
-    return "󰚩" -- nf-md-robot
-  end
-end
 local function getWords()
   if vim.bo.filetype == "md" or vim.bo.filetype == "txt" or vim.bo.filetype == "rmd" then
     if vim.fn.wordcount().visual_words == 1 then
@@ -97,6 +46,10 @@ local function getWords()
   else
     return ""
   end
+end
+
+local function hide_in_width()
+  return vim.fn.winwidth(0) > 80
 end
 
 local diff = {
@@ -143,8 +96,6 @@ return {
           lualine_b = { branch },
           lualine_c = { "filename", diagnostics },
           lualine_x = {
-            { copilot, cond_copilot, color_copilot },
-            { ollama_status },
             {
               function()
                 return require("direnv").status_line()
@@ -154,7 +105,7 @@ return {
             "encoding",
             { getWords },
           },
-          lualine_y = { filetype, conda_env, venv_env },
+          lualine_y = { filetype, venv_env },
           lualine_z = { location },
         },
         inactive_sections = {
@@ -206,6 +157,7 @@ return {
     opts = {
       dashboard = { enabled = false },
       scroll = { enabled = false },
+      statuscolumn = { enabled = true },
     },
   },
   {
