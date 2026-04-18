@@ -63,7 +63,6 @@ return {
           filetypes_include = { "jinja" },
         },
         taplo = {},
-        tsserver = {},
         yamlls = {},
         oxlint = {},
         ruff = {

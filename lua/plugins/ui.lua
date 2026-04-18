@@ -161,6 +161,12 @@ return {
     },
   },
   {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      log_level = "warn",
+    },
+  },
+  {
     "lewis6991/gitsigns.nvim",
     opts = {
       signs = {
