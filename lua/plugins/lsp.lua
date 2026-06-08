@@ -59,6 +59,12 @@ return {
         dockerls = {},
         jsonls = {},
         rust_analyzer = {},
+        rumdl = {
+          root_dir = function(fname)
+            local root = require("lspconfig.util").root_pattern(".rumdl.toml", ".git")(fname)
+            return root or vim.fs.dirname(fname)
+          end,
+        },
         tailwindcss = {
           filetypes_include = { "jinja" },
         },
@@ -121,6 +127,7 @@ return {
         python = { "ruff" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
+        markdown = { "rumdl" },
       },
     },
   },
