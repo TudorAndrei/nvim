@@ -60,9 +60,10 @@ return {
         jsonls = {},
         rust_analyzer = {},
         rumdl = {
-          root_dir = function(fname)
+          root_dir = function(bufnr, on_dir)
+            local fname = vim.api.nvim_buf_get_name(bufnr)
             local root = require("lspconfig.util").root_pattern(".rumdl.toml", ".git")(fname)
-            return root or vim.fs.dirname(fname)
+            on_dir(root or vim.fs.dirname(fname))
           end,
         },
         tailwindcss = {
