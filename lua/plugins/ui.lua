@@ -179,4 +179,12 @@ return {
       },
     },
   },
+  {
+    "clabby/difftastic.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    cmd = { "Difft", "DifftClose" },
+    opts = {
+      vcs = "git",
+    },
+  },
 }
