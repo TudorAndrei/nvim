@@ -8,9 +8,9 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
   end
 end
-map("n", "<c-h>", "<cmd>lua require('tmux').move_left()<cr>")
-map("n", "<c-j>", "<cmd>lua require('tmux').move_down()<cr>")
-map("n", "<c-k>", "<cmd>lua require('tmux').move_up()<cr>")
-map("n", "<c-l>", "<cmd>lua require('tmux').move_right()<cr>")
+map("n", "<c-h>", "<cmd>lua require('config.nav').move('left')<cr>")
+map("n", "<c-j>", "<cmd>lua require('config.nav').move('down')<cr>")
+map("n", "<c-k>", "<cmd>lua require('config.nav').move('up')<cr>")
+map("n", "<c-l>", "<cmd>lua require('config.nav').move('right')<cr>")
 map("n", "<c-n>", "<cmd>Neotree toggle<cr>")
 map("n", "<leader>gd", "<cmd>Difft<cr>", { desc = "Difftastic Diff (uncommitted)" })
