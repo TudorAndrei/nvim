@@ -5,6 +5,13 @@
 vim.api.nvim_create_autocmd({ "User" }, {
   pattern = "LazyVimStarted",
   callback = function()
+    require("lazy").update({ show = false })
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "User" }, {
+  pattern = "LazyVimStarted",
+  callback = function()
     local notes_dir = "/home/tudor/cave/littlebrain"
     local current_dir = vim.fn.getcwd()
     if vim.fn.argc() == 0 and current_dir == notes_dir then

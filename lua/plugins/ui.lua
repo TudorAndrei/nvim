@@ -116,7 +116,7 @@ return {
           lualine_y = {},
           lualine_z = {},
         },
-        extensions = { "trouble", "mason", "nvim-tree", "lazy", "symbols-outline" },
+        extensions = { "trouble", "nvim-tree", "lazy", "symbols-outline" },
       }
     end,
   },

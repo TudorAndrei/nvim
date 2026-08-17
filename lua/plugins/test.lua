@@ -3,6 +3,6 @@ return {
   { "nvim-neotest/neotest-python" },
   {
     "nvim-neotest/neotest",
-    opts = { adapters = { "neotest-plenary", "neotest-python", "neotest-rust" } },
+    opts = { adapters = { "neotest-plenary", "neotest-python" } },
   },
 }

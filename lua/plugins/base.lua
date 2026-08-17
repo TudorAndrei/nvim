@@ -42,6 +42,8 @@ return {
         "yaml",
         "json",
         "toml",
+        "scss",
+        "vue",
       },
       highlight = {
         enable = true,
