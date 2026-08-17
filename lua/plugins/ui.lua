@@ -96,11 +96,6 @@ return {
           lualine_b = { branch },
           lualine_c = { "filename", diagnostics },
           lualine_x = {
-            {
-              function()
-                return require("direnv").status_line()
-              end,
-            },
             diff,
             "encoding",
             { getWords },

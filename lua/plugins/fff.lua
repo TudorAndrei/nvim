@@ -16,9 +16,7 @@ return {
     },
     keys = {
       { "<leader><space>", function() require("fff").find_files() end, desc = "Find Files (Root Dir)" },
-      { "<leader>ff", function() require("fff").find_files() end, desc = "Find Files (Root Dir)" },
       { "<leader>/", function() require("fff").live_grep() end, desc = "Grep (Root Dir)" },
-      { "<leader>sg", function() require("fff").live_grep() end, desc = "Grep (Root Dir)" },
     },
   },
   -- Disable snacks_picker keybindings that fff replaces

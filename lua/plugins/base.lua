@@ -18,6 +18,7 @@ return {
     opts = {
       ensure_installed = {
         "css",
+        "dockerfile",
         "latex",
         "svelte",
         "just",

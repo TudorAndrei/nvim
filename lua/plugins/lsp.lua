@@ -55,8 +55,7 @@ return {
         },
         jinja_lsp = {},
         clangd = {},
-        docker_compose_language_service = {},
-        dockerls = {},
+        docker_language_server = {},
         jsonls = {},
         rust_analyzer = {},
         rumdl = {
@@ -92,25 +91,7 @@ return {
             },
           },
         },
-        basedpyright = {
-          settings = {
-            basedpyright = {
-              disableOrganizeImports = true,
-              typeCheckingMode = "standard",
-            },
-            python = {
-              -- pythonPath = pypath,
-              analysis = {
-                autoSearchPaths = true,
-                diagnosticMode = "workspace",
-                typeCheckingMode = "basic",
-              },
-            },
-          },
-          flags = {
-            debounce_text_changes = 150,
-          },
-        },
+        ty = {},
       },
     },
   },
@@ -124,31 +105,32 @@ return {
         typescriptreact = { "oxfmt" },
         html = { "djlint", "rustywind" },
         jinja = { "djlint", "rustywind" },
-        css = { "prettierd" },
+        css = { "oxfmt" },
         python = { "ruff" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
         markdown = { "rumdl" },
+        ["markdown.mdx"] = { "rumdl" },
       },
     },
   },
   {
     "mfussenegger/nvim-lint",
-    opts = {
-      linters_by_ft = {
-        lua = { "selene" },
-        css = { "stylelint" },
-        yaml = { "yamllint" },
-        dockerfile = { "hadolint" },
-      },
-      linters = {
-        selene = {
-          condition = function(ctx)
-            return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
-          end,
-        },
-      },
-    },
+    opts = function(_, opts)
+      opts.linters_by_ft = opts.linters_by_ft or {}
+      opts.linters_by_ft.lua = { "selene" }
+      opts.linters_by_ft.css = { "stylelint" }
+      opts.linters_by_ft.dockerfile = { "hadolint" }
+      opts.linters_by_ft.markdown = {}
+      opts.linters_by_ft["markdown.mdx"] = {}
+      opts.linters = opts.linters or {}
+      opts.linters.selene = {
+        condition = function(ctx)
+          return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
+        end,
+      }
+      return opts
+    end,
   },
   -- TODO: check the default
   {
@@ -158,7 +140,7 @@ return {
     },
     opts = {
       enabled = true,
-      snippet_engine = "luasnip",
+      snippet_engine = "nvim",
       languages = {
         python = {
           template = {
