@@ -72,6 +72,8 @@ return {
         yamlls = {},
         oxlint = {},
         ruff = {
+          -- uv workspaces: anchor on the lock at the workspace root, not the member pyproject.toml
+          root_markers = { "uv.lock", "pyproject.toml", "ruff.toml", ".ruff.toml", ".git" },
           capabilities = {
             hoverProvider = false,
           },
@@ -91,7 +93,10 @@ return {
             },
           },
         },
-        ty = {},
+        ty = {
+          -- uv workspaces: the root .venv holds the editable installs of every member
+          root_markers = { "uv.lock", "ty.toml", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
+        },
       },
     },
   },
