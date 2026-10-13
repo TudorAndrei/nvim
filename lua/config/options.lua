@@ -11,6 +11,7 @@ opt.signcolumn = "yes"
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.swapfile = false
+opt.wrap = true
 
 vim.schedule(function()
   opt.clipboard = "unnamedplus"
